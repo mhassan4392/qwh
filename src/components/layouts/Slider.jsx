@@ -1,25 +1,26 @@
-import SlickSlider from "react-slick";
+import Slider from "react-slick";
 import SliderImage from "@/assets/images/slider.jpg";
 import "./Slider.css";
-const Slider = () => {
+const IndexSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
+    speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,
+    autoplay: true,
   };
   return (
     <div className="index-slider bg-white px-4 relative overflow-hidden">
-      <SlickSlider {...settings}>
+      <Slider {...settings}>
         {[...Array(5)].map((image, i) => (
           <div key={i} className="h-full">
             <img src={SliderImage} className="rounded-xl" alt="" />
           </div>
         ))}
-      </SlickSlider>
+      </Slider>
     </div>
   );
 };
 
-export default Slider;
+export default IndexSlider;
