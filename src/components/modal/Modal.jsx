@@ -1,5 +1,4 @@
 import { AnimatePresence, motion } from "framer-motion";
-import Overlay from "../overlay/Overlay";
 
 import ModalHeader from "./ModalHeader";
 import ModalBody from "./ModalBody";
@@ -11,9 +10,6 @@ const Modal = ({
   justify = "center",
   align = "center",
   size = "sm",
-  overlay = true,
-  overlayClass = "",
-  overlayOpacity = 0.5,
   children,
   onOutsideClick,
   className = "",
@@ -28,11 +24,6 @@ const Modal = ({
 
   return (
     <>
-      <Overlay
-        opacity={overlayOpacity}
-        className={overlayClass}
-        open={overlay && open}
-      />
       <AnimatePresence>
         {open && (
           <motion.div
