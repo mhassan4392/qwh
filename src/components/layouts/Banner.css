@@ -1,0 +1,14 @@
+.banner-content {
+  overflow: hidden;
+  animation: banner-content 80s linear infinite;
+}
+
+.banner-content:hover {
+  animation-play-state: paused;
+}
+
+@keyframes banner-content {
+  100% {
+    transform: translateX(-100%);
+  }
+}
