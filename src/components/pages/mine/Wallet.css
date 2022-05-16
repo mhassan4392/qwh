@@ -1,0 +1,115 @@
+.account-bottom {
+  padding: 0px 10px;
+}
+
+.account-image {
+  width: 20px;
+}
+
+.account-top {
+  padding: 8px 30px;
+}
+
+@media only screen and (min-width: 310px) {
+  .account-bottom {
+    padding: 10px 10px;
+  }
+  .account-image {
+    width: 25px;
+  }
+}
+
+@media only screen and (min-width: 330px) {
+  .account-bottom {
+    padding: 18px 10px;
+  }
+}
+
+@media only screen and (min-width: 370px) {
+  .account-bottom {
+    padding: 26px 15px;
+  }
+  .account-image {
+    width: 35px;
+  }
+}
+
+@media only screen and (min-width: 430px) {
+  .account-bottom {
+    padding: 40px 20px;
+  }
+}
+
+@media only screen and (min-width: 480px) {
+  .account-bottom {
+    padding: 60px 25px;
+  }
+}
+
+@media only screen and (min-width: 550px) {
+  .account-bottom {
+    padding: 40px 30px;
+  }
+
+  .account-top {
+    padding: 25px 50px;
+  }
+
+  .account-image {
+    width: 50px;
+  }
+}
+
+@media only screen and (min-width: 650px) {
+  .account-bottom {
+    padding: 70px 35px;
+  }
+}
+
+@media only screen and (min-width: 750px) {
+  .account-bottom {
+    padding: 100px 45px;
+  }
+}
+
+@media only screen and (min-width: 870px) {
+  .account-bottom {
+    padding: 80px 55px;
+  }
+
+  .account-top {
+    padding: 55px 70px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .account-bottom {
+    padding: 100px 70px;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .account-bottom {
+    padding: 130px 70px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .account-bottom {
+    padding: 150px 85px;
+  }
+
+  .account-top {
+    padding: 75px 80px;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .account-bottom {
+    padding: 170px 100px;
+  }
+
+  .account-top {
+    padding: 105px 100px;
+  }
+}

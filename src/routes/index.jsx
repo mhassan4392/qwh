@@ -1,12 +1,14 @@
 import { Route, Routes } from "react-router-dom";
-import Layout from "@/layouts/layout";
+import HomeLayout from "@/layouts/home";
 import Index from "@/pages";
+import Mine from "@/pages/mine";
 
 const AllRoutes = () => {
   return (
     <Routes>
-      <Route path="/" element={<Layout />}>
+      <Route path="/" element={<HomeLayout />}>
         <Route index element={<Index />} />
+        <Route path="/mine" element={<Mine />} />
       </Route>
     </Routes>
   );

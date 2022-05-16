@@ -1,11 +1,15 @@
-import Banner from "../components/layouts/Banner";
-import Features from "../components/layouts/Features";
-import StartModal from "../components/layouts/Modal";
-import Slider from "../components/layouts/Slider";
+import Banner from "../components/pages/index/Banner";
+import Features from "../components/pages/index/Features";
+import StartModal from "../components/pages/index/Modal";
+import Slider from "../components/pages/index/Slider";
+import Navbar from "../components/pages/index/Navbar";
 
 const Index = () => {
   return (
     <div>
+      <header className="bg-white">
+        <Navbar />
+      </header>
       <StartModal />
       <Slider />
       <Banner />

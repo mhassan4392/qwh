@@ -2,7 +2,7 @@ import AllRoutes from "./routes";
 
 const App = () => {
   return (
-    <div className="h-screen overflow-x-hidden overflow-y-auto">
+    <div className="h-screen overflow-hidden">
       <AllRoutes />
     </div>
   );

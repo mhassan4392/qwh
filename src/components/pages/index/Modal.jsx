@@ -1,8 +1,12 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "@/components/modal/Modal";
 import { BsX } from "react-icons/bs";
+import index_modal_image from "@/assets/images/index_modal_image.jpg";
 const StartModal = () => {
-  const [modal, setModal] = useState(true);
+  const [modal, setModal] = useState(false);
+  useEffect(() => {
+    setTimeout(() => setModal(true), 2000);
+  }, []);
   return (
     <div>
       <Modal
@@ -17,11 +21,8 @@ const StartModal = () => {
             <BsX className="text-2xl" onClick={() => setModal(false)} />
           </div>
         </Modal.Header>
-        <Modal.Body>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Inventore
-          veniam necessitatibus explicabo a doloremque optio odio doloribus quo
-          ea voluptates! Ex corrupti tempore vel, eligendi sequi aut omnis!
-          Beatae, libero.
+        <Modal.Body className="p-0">
+          <img src={index_modal_image} className="w-full" alt="" />
         </Modal.Body>
         <Modal.Footer className="relative">
           <div className="absolute bottom-[-20px] left-0 right-0 space-x-2 z-10 flex items-center justify-center">
