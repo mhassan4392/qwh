@@ -14,7 +14,7 @@ const features = [
 ];
 const Wallet = () => {
   return (
-    <div className="px-4 w-full py-4 bg-white">
+    <div className="px-4 w-full py-4">
       <div className="relative">
         <img src={account_wallet_bg} className="w-full" alt="" />
         <div className="absolute inset-0 bg-no-repeat bg-contain md:bg-center md:bg-cover">
