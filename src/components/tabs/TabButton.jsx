@@ -23,7 +23,9 @@ const TabButton = ({
         }`}
         {...rest}
       >
-        {typeof children == "function" ? children() : children}
+        {typeof children == "function"
+          ? children({ isActive: tab == tab_ })
+          : children}
       </Link>
     );
   }
@@ -38,7 +40,9 @@ const TabButton = ({
       }`}
       {...rest}
     >
-      {typeof children == "function" ? children() : children}
+      {typeof children == "function"
+        ? children({ isActive: tab == tab_ })
+        : children}
     </As>
   );
 };

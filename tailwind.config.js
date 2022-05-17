@@ -8,6 +8,7 @@ module.exports = {
         light: "#9aa4c2",
         lighter: "#ebeefd",
         lighten: "#87ceeb",
+        "common-bg": "#f7f9fe",
       },
     },
   },

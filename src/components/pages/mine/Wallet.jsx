@@ -5,6 +5,7 @@ import account_moneysave from "@/assets/images/account_moneysave.webp";
 import account_moneydraw from "@/assets/images/account_moneydraw.webp";
 import account_moneytransfer from "@/assets/images/account_moneytransfer.webp";
 import account_vip from "@/assets/images/account_vip.webp";
+import { Link } from "react-router-dom";
 
 const features = [
   { title: "存款", image: account_moneysave },
@@ -19,10 +20,10 @@ const Wallet = () => {
         <img src={account_wallet_bg} className="w-full" alt="" />
         <div className="absolute inset-0 bg-no-repeat bg-contain md:bg-center md:bg-cover">
           <div className="flex items-center justify-between account-top">
-            <div className="flex items-center space-x-1">
+            <Link to="/wallet/mywallet" className="flex items-center space-x-1">
               <img src={account_balance} className="w-6" alt="" />
               <div className="text-xs">中心钱包</div>
-            </div>
+            </Link>
             <div className="font-semibold">
               <small>¥</small>
               <span className="text-lg">0.00</span>

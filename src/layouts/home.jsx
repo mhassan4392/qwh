@@ -7,12 +7,12 @@ const HomeLayout = () => {
   const [paddingBottom, setPaddingBottom] = useState(0);
   return (
     <div
-      className="h-full relative bg-lighter overflow-y-auto"
-      style={{ paddingBottom: paddingBottom + 30 + "px" }}
+      className="h-full relative bg-common-bg overflow-y-auto"
+      style={{ paddingBottom: paddingBottom + "px" }}
     >
-      <div>
-        <Outlet />
-      </div>
+      {/* <div> */}
+      <Outlet />
+      {/* </div> */}
       <FooterLinks setPaddingBottom={setPaddingBottom} />
     </div>
   );
