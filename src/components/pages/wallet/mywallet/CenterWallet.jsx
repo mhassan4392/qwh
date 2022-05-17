@@ -5,15 +5,17 @@ import feature_moneytransfer from "@/assets/images/wallet/feature_moneytransfer.
 import feature_withdrawmoney from "@/assets/images/wallet/feature_withdrawmoney.webp";
 import feature_bankcard from "@/assets/images/wallet/feature_bankcard.webp";
 
+import { Link } from "react-router-dom";
+
 import { HiOutlineChevronDoubleDown } from "react-icons/hi";
 
 const CenterWallet = () => {
   const [show, setShow] = useState(false);
   const features = [
-    { title: "存款", image: feature_moneydraw },
-    { title: "转账", image: feature_moneytransfer },
-    { title: "取款", image: feature_withdrawmoney },
-    { title: "银行卡", image: feature_bankcard },
+    { title: "存款", image: feature_moneydraw, to: "/wallet/mydeposit" },
+    { title: "转账", image: feature_moneytransfer, to: "/wallet/transfer" },
+    { title: "取款", image: feature_withdrawmoney, to: "/wallet/withdraw" },
+    { title: "银行卡", image: feature_bankcard, to: "/bankcard/list" },
   ];
   return (
     <div className="shadow-lg mb-5">
@@ -42,10 +44,10 @@ const CenterWallet = () => {
 
         <div className="flex items-center justify-between px-5 my-5">
           {features.map((feature, i) => (
-            <div key={i} className="space-y-1">
+            <Link to={feature.to} key={i} className="space-y-1">
               <img src={feature.image} className="w-10 sm:w-20" alt="" />
               <div className="text-center text-xs">{feature.title}</div>
-            </div>
+            </Link>
           ))}
         </div>
 

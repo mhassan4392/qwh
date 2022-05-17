@@ -1,21 +1,22 @@
 import feature_moneydraw from "@/assets/images/wallet/feature_moneydraw.webp";
-import feature_withdrawmoney from "@/assets/images/wallet/feature_withdrawmoney.webp";
+import feature_moneytransfer from "@/assets/images/wallet/feature_moneytransfer.webp";
 
 import usdt_withdrawal from "@/assets/images/wallet/usdt_withdrawal.webp";
 import usdt_address from "@/assets/images/wallet/usdt_address.webp";
 import usdt_balance from "@/assets/images/wallet/usdt_balance.webp";
 
 import { AiFillStar } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const VirtualWallet = () => {
   const features = [
-    { title: "充币", image: feature_moneydraw },
-    { title: "充币", image: usdt_withdrawal },
-    { title: "取款", image: feature_withdrawmoney },
-    { title: "银行卡", image: usdt_address },
+    { title: "充币", image: feature_moneydraw, to: "/wallet/mydeposit" },
+    { title: "充币", image: usdt_withdrawal, to: "/wallet/withdraw" },
+    { title: "取款", image: feature_moneytransfer, to: "/wallet/transfer" },
+    { title: "银行卡", image: usdt_address, to: "/bankcard/list" },
   ];
   return (
-    <div className="shadow-lg">
+    <div className="shadow-lg mb-5">
       <div className="py-2 bg-contain bg-center bg-no-repeat bg-gradient-to-r from-green-500 to-green-800 rounded-t-lg">
         <span className="text-white text-sm border-l-2 border-white px-3 mx-3">
           虚拟币钱包（USDT）
@@ -41,10 +42,10 @@ const VirtualWallet = () => {
 
         <div className="flex items-center justify-between px-5 my-5">
           {features.map((feature, i) => (
-            <div key={i} className="space-y-1">
+            <Link to={feature.to} key={i} className="space-y-1">
               <img src={feature.image} className="w-10 sm:w-20" alt="" />
               <div className="text-center text-xs">{feature.title}</div>
-            </div>
+            </Link>
           ))}
         </div>
 

@@ -6,10 +6,13 @@ import {
   TabItem,
 } from "@/components/tabs";
 import { BsChevronLeft, BsPlusLg } from "react-icons/bs";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 
 import nodata from "@/assets/images/bankcard/nodata.webp";
 const BankCardList = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const usdt = searchParams.get("usdt");
+  const ebpay = searchParams.get("ebpay");
   const tabs = [
     { title: "银行卡", id: 0 },
     { title: "虚拟币", id: 1 },
@@ -39,6 +42,15 @@ const BankCardList = () => {
                   activeClass="bg-white text-black"
                   key={i}
                   tab={tab.id}
+                  onClick={() => {
+                    if (tab.id == 1) {
+                      setSearchParams({ usdt: 1 });
+                    } else if (tab.id == 2) {
+                      setSearchParams({ ebpay: 1 });
+                    } else {
+                      setSearchParams({});
+                    }
+                  }}
                 >
                   {tab.title}
                 </TabButton>
@@ -59,11 +71,15 @@ const BankCardList = () => {
                     className="flex items-center justify-center w-full bg-white text-black py-4 my-3 rounded"
                   >
                     <BsPlusLg />
-                    <span>添加银行卡</span>
+                    {!usdt && !ebpay && "添加银行卡"}
+                    {usdt && "添加虚拟币地址"}
+                    {ebpay && "添加EBpay地址"}
                   </Link>
 
                   <div className="text-center text-sm">
-                    最多支持添加10张银行卡
+                    {!usdt && !ebpay && "最多支持添加10张银行卡"}
+                    {usdt && "最多支持添加5个虚拟币地址"}
+                    {ebpay && "最多支持添加5个EBpay地址"}
                   </div>
                 </TabItem>
               ))}
