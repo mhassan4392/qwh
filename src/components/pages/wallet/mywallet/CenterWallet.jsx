@@ -56,8 +56,8 @@ const CenterWallet = () => {
             <div className="flex items-center px-2 justify-between py-2">
               <div className="flex items-center space-x-2 text-xs">
                 <div>场馆余额</div>
-                <div className="border border-primary rounded-full px-3 py1">
-                  -场馆
+                <div className="border border-primary text-primary rounded-full px-3 py1">
+                  一场馆
                 </div>
               </div>
 
