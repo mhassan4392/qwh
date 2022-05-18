@@ -1,3 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.icon-select-bg {
+  background-image: url("/src/assets/images/icon_select.webp");
+  background-repeat: no-repeat;
+  background-size: 15px;
+  background-position: bottom right;
+}

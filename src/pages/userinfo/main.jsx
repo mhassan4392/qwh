@@ -22,7 +22,7 @@ const Main = () => {
   });
   const [pickTwo, setPickTwo] = useState(false);
   const onPickTwoChange = (name, value) => {
-    setValues1((prevState) => {
+    setValues2((prevState) => {
       return { ...prevState, [name]: value };
     });
   };

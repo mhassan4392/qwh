@@ -4,7 +4,10 @@ import Wallet from "../components/pages/mine/Wallet";
 
 const Mine = () => {
   return (
-    <div className="h-full overflow-y-auto bg-[#f7f9fe] flex flex-col">
+    <div
+      // style={{ paddingBottom: "60px" }}
+      className="h-full overflow-y-auto bg-[#f7f9fe] flex flex-col"
+    >
       <header>
         <MineNavbar />
       </header>

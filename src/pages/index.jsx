@@ -6,7 +6,7 @@ import Navbar from "../components/pages/index/Navbar";
 
 const Index = () => {
   return (
-    <div>
+    <div style={{ paddingBottom: "60px" }}>
       <header className="bg-white">
         <Navbar />
       </header>

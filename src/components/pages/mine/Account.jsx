@@ -33,10 +33,11 @@ const MineAccount = () => {
     <div
       style={{
         backgroundImage: "linear-gradient(to bottom, #6aaaf717, #edf8ff)",
+        paddingBottom: "60px",
       }}
-      className="rounded-t-3xl overflow-hidden grow h-full shadow-inner shadow-gray-200"
+      className="rounded-t-3xl grow h-full shadow-inner shadow-[#6aaaf717]"
     >
-      <div className="flex items-center justify-between px-4 py-4 overflow-hidden">
+      <div className="flex items-center justify-between px-4 py-4">
         {features.map((feature, i) => (
           <div key={i} className="space-y-1 flex flex-col items-center">
             <img src={feature.image} className="w-10" alt="" />

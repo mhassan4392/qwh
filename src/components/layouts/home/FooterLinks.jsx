@@ -38,7 +38,7 @@ const FooterLinks = ({ setPaddingBottom }) => {
   return (
     <>
       <div ref={LinksRef} className="fixed bottom-0 left-0 right-0">
-        <div className="flex items-center justify-between bg-white px-6 py-2 rounded-t-3xl shadow-inner shadow-gray-300">
+        <div className="flex items-center justify-between bg-white px-6 py-2 rounded-t-3xl shadow-inner shadow-gray-200">
           {links.map((link, i) => (
             <NavLink key={i} to={link.to}>
               {({ isActive }) => (

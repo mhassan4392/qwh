@@ -87,7 +87,7 @@ const TabOne = () => {
         <div
           onClick={() => setSelect("极速取款")}
           className={`border rounded-lg px-3 py-3 ${
-            select == "极速取款" ? "border-[#4080ff]" : ""
+            select == "极速取款" ? "border-[#4080ff] icon-select-bg" : ""
           }`}
         >
           极速取款
@@ -95,7 +95,7 @@ const TabOne = () => {
         <div
           onClick={() => setSelect("EBpay提币")}
           className={`border rounded-lg px-3 py-3 ${
-            select == "EBpay提币" ? "border-[#4080ff]" : ""
+            select == "EBpay提币" ? "border-[#4080ff] icon-select-bg" : ""
           }`}
         >
           EBpay提币

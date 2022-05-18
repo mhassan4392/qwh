@@ -53,7 +53,7 @@ const BankCardAdd = () => {
           <div className="flex items-center space-x-3">
             <div
               className={`px-3 py-1.5 border rounded ${
-                value == "储蓄卡" ? "border-primary" : ""
+                value == "储蓄卡" ? "border-primary icon-select-bg" : ""
               }`}
               onClick={() => setValue("储蓄卡")}
             >
@@ -61,7 +61,7 @@ const BankCardAdd = () => {
             </div>
             <div
               className={`px-3 py-1.5 border rounded ${
-                value == "信用卡" ? "border-primary" : ""
+                value == "信用卡" ? "border-primary icon-select-bg" : ""
               }`}
               onClick={() => setValue("信用卡")}
             >

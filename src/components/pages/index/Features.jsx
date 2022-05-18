@@ -12,7 +12,7 @@ const Features = () => {
     { image: feature_vip, title: "VIP" },
   ];
   return (
-    <div className="px-4 py-3 rounded-b-2xl bg-white">
+    <div className="px-4 py-3 rounded-b-2xl bg-white mb-5 shadow">
       <div className="flex items-center justify-between">
         <div>
           <div className="flex items-center basis-[45%]">

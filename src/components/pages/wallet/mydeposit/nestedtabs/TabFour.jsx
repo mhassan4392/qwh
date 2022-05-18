@@ -51,7 +51,7 @@ const TabFour = () => {
             <div
               onClick={() => setValue(amount)}
               className={`border py-2 text-center rounded ${
-                amount == value ? "border-secondary" : ""
+                amount == value ? "border-secondary icon-select-bg" : ""
               }`}
             >
               ￥{amount}

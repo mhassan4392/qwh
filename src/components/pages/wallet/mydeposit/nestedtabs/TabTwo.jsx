@@ -37,7 +37,7 @@ const TabTwo = () => {
             <div
               onClick={() => setValue("TRC20")}
               className={`border px-3 py-2 rounded ${
-                value == "TRC20" ? "border-secondary" : ""
+                value == "TRC20" ? "border-secondary icon-select-bg" : ""
               }`}
             >
               TRC20
@@ -45,7 +45,7 @@ const TabTwo = () => {
             <div
               onClick={() => setValue("ERC20")}
               className={`border px-3 py-2 rounded ${
-                value == "ERC20" ? "border-secondary" : ""
+                value == "ERC20" ? "border-secondary icon-select-bg" : ""
               }`}
             >
               ERC20

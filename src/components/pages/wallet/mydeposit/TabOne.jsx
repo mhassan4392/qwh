@@ -46,7 +46,7 @@ const TabOne = () => {
           {tabs.map((tab, i) => (
             <TabButton
               className="text-xs flex flex-col h-20 rounded-lg items-center justify-center border space-y-1"
-              activeClass="bg-white text-black border-[#4080ff]"
+              activeClass="bg-white text-black border-[#4080ff] icon-select-bg"
               key={i}
               tab={i}
             >
