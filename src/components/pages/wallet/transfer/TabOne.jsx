@@ -83,7 +83,7 @@ const TabOne = () => {
         </div>
       </div>
 
-      <div className="flex items-center justify-between bg-white py-4 px-4">
+      <div className="flex items-center justify-between bg-white py-4 px-4 my-t">
         <div>自动转账</div>
         <div>
           <Checkbox value={value} onChange={(v) => setValue(v)} />
