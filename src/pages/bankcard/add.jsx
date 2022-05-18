@@ -10,7 +10,7 @@ const BankCardAdd = () => {
   const [select, setSelect] = useState("中国银行");
   const selects = ["中国银行", "建设银行", "农业银行", "工商银行", "招商银行"];
   return (
-    <div className="bg-[#f7f9fe] h-full flex flex-col">
+    <div className="bg-common-bg h-full flex flex-col">
       <header>
         <nav className="bg-white border-b flex items-center justify-center relative py-3">
           <Link
@@ -93,7 +93,7 @@ const BankCardAdd = () => {
         </div>
 
         <div className="px-4 text-center py-2">
-          如需帮助，<span className="text-blue-400">请联系客服</span>
+          如需帮助，<span className="text-secondary">请联系客服</span>
         </div>
       </div>
 
@@ -106,7 +106,7 @@ const BankCardAdd = () => {
       >
         <Modal.Header className="relative text-center">
           选择所属银行
-          <div className="absolute inset-0 text-blue-400 flex items-center px-2">
+          <div className="absolute inset-0 text-secondary flex items-center px-2">
             <div onClick={() => setModal(false)}>取消</div>
           </div>
         </Modal.Header>
@@ -127,7 +127,7 @@ const BankCardAdd = () => {
                 </div>
                 <div>
                   {select == selected && (
-                    <AiOutlineCheck className="text-blue-400" />
+                    <AiOutlineCheck className="text-secondary" />
                   )}
                 </div>
               </div>

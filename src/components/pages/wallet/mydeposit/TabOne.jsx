@@ -55,7 +55,7 @@ const TabOne = () => {
                   <img src={tab.image} className="w-8" alt="" />
                   <div
                     className={`text-[10px] ${
-                      isActive ? "text-[#4080ff]" : ""
+                      isActive ? "text-secondary" : ""
                     }`}
                   >
                     <div>{tab.title}</div>
@@ -98,7 +98,7 @@ const TabOne = () => {
       </div>
 
       <div className="my-5 px-4 text-center text-xs">
-        存款遇到问题？联系<span className="text-[#4080ff]">人工客服</span>解决
+        存款遇到问题？联系<span className="text-secondary">人工客服</span>解决
       </div>
     </>
   );

@@ -7,9 +7,7 @@ const HomeLayout = () => {
   const [paddingBottom, setPaddingBottom] = useState(0);
   return (
     <div className="h-full relative bg-common-bg overflow-y-auto">
-      {/* <div> */}
       <Outlet />
-      {/* </div> */}
       <FooterLinks setPaddingBottom={setPaddingBottom} />
     </div>
   );

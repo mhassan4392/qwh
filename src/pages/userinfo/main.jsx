@@ -3,7 +3,7 @@ import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import profile from "@/assets/images/profile.png";
 import { Link } from "react-router-dom";
 
-import Pick from "../../components/Picker";
+import Pick from "../../components/picker/Picker";
 const Main = () => {
   const [values1, setValues1] = useState({
     title: "Mr.",
@@ -27,7 +27,7 @@ const Main = () => {
     });
   };
   return (
-    <div className="bg-[#f7f9fe] h-full flex flex-col">
+    <div className="bg-common-bg h-full flex flex-col">
       <header>
         <nav className="bg-white mb-2 flex items-center justify-center relative py-3">
           <Link to="/mine" className="absolute inset-0 flex items-center mx-2">
@@ -54,9 +54,9 @@ const Main = () => {
           className="flex items-center justify-between px-4 py-4 border-b bg-white"
         >
           <div className="basis-1/3">真实姓名</div>
-          <div className="text-light text-sm flex items-center justify-end basis-2/3">
+          <div className="text-light text-xs flex items-center justify-end basis-2/3">
             <div>需与银行卡持卡人姓名一致，否则无法提款</div>
-            <BsChevronRight className="shrink-0" />
+            <BsChevronRight className="shrink-0 ml-0.5" />
           </div>
         </Link>
 
@@ -65,9 +65,9 @@ const Main = () => {
           className="flex items-center justify-between px-4 py-4 border-b bg-white"
         >
           <div className="basis-1/3">性别</div>
-          <div className="text-light text-sm flex items-center justify-end basis-2/3">
+          <div className="text-light text-xs flex items-center justify-end basis-2/3">
             <div>未选择</div>
-            <BsChevronRight className="shrink-0" />
+            <BsChevronRight className="shrink-0 ml-0.5" />
           </div>
         </div>
 
@@ -76,9 +76,9 @@ const Main = () => {
           className="flex items-center justify-between px-4 py-4 border-b bg-white mb-3"
         >
           <div className="basis-1/3">出生日期</div>
-          <div className="text-light text-sm flex items-center basis-2/3 justify-end">
+          <div className="text-light text-xs flex items-center basis-2/3 justify-end">
             <div>添加日期，确保您已满18周岁</div>
-            <BsChevronRight className="shrink-0" />
+            <BsChevronRight className="shrink-0 ml-0.5" />
           </div>
         </div>
 
@@ -89,9 +89,9 @@ const Main = () => {
 
         <div className="flex items-center justify-between px-4 py-4 border-b bg-white mb-4">
           <div className="basis-1/3">电子邮箱</div>
-          <div className="text-light text-sm flex items-center justify-end basis-2/3">
+          <div className="text-light text-xs flex items-center justify-end basis-2/3">
             <div>绑定邮箱保护账号安全</div>
-            <BsChevronRight className="shrink-0" />
+            <BsChevronRight className="shrink-0 ml-0.5" />
           </div>
         </div>
 

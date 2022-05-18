@@ -36,10 +36,10 @@ const TabOne = () => {
         <div className="flex items-center space-x-2">
           <div>钱包金额</div>
 
-          <ImSpinner11 className="text-[#4080ff]" />
+          <ImSpinner11 className="text-secondary" />
         </div>
 
-        <div className="text-[#4080ff]">一键回收</div>
+        <div className="text-secondary">一键回收</div>
       </div>
 
       <div className="flex items-center justify-between px-4 py-4 bg-white border-b">
@@ -48,7 +48,7 @@ const TabOne = () => {
             <img src={icon_wallet_wallet} className="w-5" alt="" />
             <div className="text-xs">中心钱包</div>
           </div>
-          <div className="text-[#4080ff] text-center">￥ 0.00</div>
+          <div className="text-secondary text-center">￥ 0.00</div>
         </div>
 
         <div className="flex items-center justify-center flex-col">
@@ -56,7 +56,7 @@ const TabOne = () => {
             <img src={icon_wallet_wallet} className="w-5" alt="" />
             <div className="text-xs">锁定钱包</div>
           </div>
-          <div className="text-[#4080ff] text-center">￥ 0.00</div>
+          <div className="text-secondary text-center">￥ 0.00</div>
         </div>
       </div>
 
@@ -83,7 +83,7 @@ const TabOne = () => {
         </div>
       </div>
 
-      <div className="flex items-center justify-between bg-white py-4 px-4 my-t">
+      <div className="flex items-center justify-between bg-white py-4 px-4 my-3">
         <div>自动转账</div>
         <div>
           <Checkbox value={value} onChange={(v) => setValue(v)} />
@@ -91,7 +91,7 @@ const TabOne = () => {
       </div>
 
       <div className="text-center px-4 text-xs my-5">
-        如需帮助，请 <span className="text-[#4080ff]">联系客服</span>
+        如需帮助，请 <span className="text-secondary">联系客服</span>
       </div>
     </>
   );

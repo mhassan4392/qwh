@@ -29,14 +29,14 @@ const VirtualWallet = () => {
               <img src={usdt_balance} className="w-3" alt="" />
               <div className="text-[9px]">中心钱包</div>
             </div>
-            <div className="text-[#4080ff] text-center">￥ 0.00</div>
+            <div className="text-secondary text-center">￥ 0.00</div>
           </div>
           <div>
             <div className="flex space-x-2">
               <img src={usdt_balance} className="w-3" alt="" />
               <div className="text-[9px]">中心钱包</div>
             </div>
-            <div className="text-[#4080ff] text-center">￥ 0.00</div>
+            <div className="text-secondary text-center">￥ 0.00</div>
           </div>
         </div>
 
@@ -50,7 +50,7 @@ const VirtualWallet = () => {
         </div>
 
         <div className="px-5">
-          <div className="py-2 bg-[#f9f9f9] px-2 rounded-xl space-y-2 text-light text-[10px]">
+          <div className="py-2 bg-light-bg px-2 rounded-xl space-y-2 text-light text-[10px]">
             <div className="flex items-center space-x-1">
               <AiFillStar />
               <p>用于存放USDT数字货币，安全稳定、不受监管</p>

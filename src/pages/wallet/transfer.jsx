@@ -17,7 +17,7 @@ const WalletTransfer = () => {
     { title: "兑换", id: 1 },
   ];
   return (
-    <div className="bg-[#f7f9fe] h-full flex flex-col">
+    <div className="bg-common-bg h-full flex flex-col">
       <header>
         <nav className="bg-white flex items-center justify-between relative py-3 px-2">
           <Link to="/wallet/mywallet" className="inset-0 flex items-center">
@@ -31,7 +31,7 @@ const WalletTransfer = () => {
         </nav>
       </header>
 
-      <div className="grow h-full overflow-y-auto bg-[#f9f9f9]">
+      <div className="grow h-full overflow-y-auto">
         <Tabs defaultTab={0}>
           <TabsButtons className="flex items-center text-xs pt-3 justify-center bg-[#f9f9f9] cursor-pointer overflow-hidden">
             {tabs.map((tab, i) => (

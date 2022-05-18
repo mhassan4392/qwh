@@ -35,10 +35,10 @@ const TabOne = () => {
         <div className="flex items-center space-x-2">
           <div>钱包金额</div>
 
-          <ImSpinner11 className="text-[#4080ff]" />
+          <ImSpinner11 className="text-secondary" />
         </div>
 
-        <div className="text-[#4080ff]">一键回收</div>
+        <div className="text-secondary">一键回收</div>
       </div>
 
       <div className="flex items-center justify-between px-4 py-4 bg-white border-b">
@@ -47,7 +47,7 @@ const TabOne = () => {
             <img src={icon_wallet_wallet} className="w-5" alt="" />
             <div className="text-xs">中心钱包</div>
           </div>
-          <div className="text-[#4080ff] text-center">￥ 0.00</div>
+          <div className="text-secondary text-center">￥ 0.00</div>
         </div>
 
         <div className="flex items-center justify-center flex-col">
@@ -55,7 +55,7 @@ const TabOne = () => {
             <img src={icon_wallet_wallet} className="w-5" alt="" />
             <div className="text-xs">锁定钱包</div>
           </div>
-          <div className="text-[#4080ff] text-center">￥ 0.00</div>
+          <div className="text-secondary text-center">￥ 0.00</div>
         </div>
       </div>
 
@@ -87,7 +87,7 @@ const TabOne = () => {
         <div
           onClick={() => setSelect("极速取款")}
           className={`border rounded-lg px-3 py-3 ${
-            select == "极速取款" ? "border-[#4080ff] icon-select-bg" : ""
+            select == "极速取款" ? "border-secondary icon-select-bg" : ""
           }`}
         >
           极速取款
@@ -95,7 +95,7 @@ const TabOne = () => {
         <div
           onClick={() => setSelect("EBpay提币")}
           className={`border rounded-lg px-3 py-3 ${
-            select == "EBpay提币" ? "border-[#4080ff] icon-select-bg" : ""
+            select == "EBpay提币" ? "border-secondary icon-select-bg" : ""
           }`}
         >
           EBpay提币
@@ -104,7 +104,7 @@ const TabOne = () => {
 
       <div className="flex items-center justify-between text-xs px-4 bg-white py-4">
         <div>{select == "极速取款" ? "到账银行卡" : "EBpay到账地址"}</div>
-        <div className="flex items-center space-x-2 text-[#4080ff]">
+        <div className="flex items-center space-x-2 text-secondary">
           <AiOutlinePlus />
           <span>
             {select == "极速取款" ? "添加银行卡" : "添加EBpay收款地址"}
@@ -119,7 +119,7 @@ const TabOne = () => {
       </div>
 
       <div className="text-center px-4 text-xs my-5">
-        取款遇到问题？联系<span className="text-[#4080ff]">人工客服</span>解决
+        取款遇到问题？联系<span className="text-secondary">人工客服</span>解决
       </div>
     </>
   );

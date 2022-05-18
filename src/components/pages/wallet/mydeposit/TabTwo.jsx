@@ -8,7 +8,7 @@ const TabTwo = () => {
   return (
     <>
       <div className="bg-white py-2 text-xs">
-        <div className="mx-4 px-2 py-3 bg-common-bg">
+        <div className="mx-4 px-2 py-3 rounded bg-common-bg">
           <div className="flex items-center justify-between">
             <div>USDT价格稳定 流通性高 不受监管</div>
             <div className="flex items-center text-light text-[9px]">

@@ -12,7 +12,7 @@ const TabTwo = () => {
   return (
     <>
       <div className="py-3 px-2 bg-white">
-        <div className="bg-[#f9f9f9] py-2 px-2 space-y-2">
+        <div className="bg-light-bg py-2 px-2 space-y-2">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
               <AiOutlineBell className="shrink-0" />
@@ -39,7 +39,7 @@ const TabTwo = () => {
             <div className="text-light">从</div>
             <div className="text-xs">中心钱包</div>
           </div>
-          <div className="text-[#4080ff] text-center">￥ 0.00</div>
+          <div className="text-secondary text-center">￥ 0.00</div>
         </div>
 
         <div>
@@ -51,14 +51,14 @@ const TabTwo = () => {
             <div className="text-light">到</div>
             <div className="text-xs">锁定钱包</div>
           </div>
-          <div className="text-[#4080ff] text-center">￥ 0.00</div>
+          <div className="text-secondary text-center">￥ 0.00</div>
         </div>
       </div>
 
       <div className="text-xs px-4 my-3 bg-white py-4">
         <div className="space-y-3">
           <div>到账虚拟币地址</div>
-          <div className="flex items-center justify-between border-b-4 border-[#f9f9f9]">
+          <div className="flex items-center justify-between border-b-4 border-light-bg">
             <div className="flex items-center">
               <div className="font-bold text-lg mr-1">￥</div>
               <input
@@ -69,7 +69,7 @@ const TabTwo = () => {
                 id=""
               />
             </div>
-            <div className="text-[#4080ff] shrink-0">最大金额</div>
+            <div className="text-secondary shrink-0">最大金额</div>
           </div>
           <div>
             <span className="text-light">参考汇率: </span> &nbsp; 6.85
@@ -84,7 +84,7 @@ const TabTwo = () => {
       </div>
 
       <div className="text-center px-4 text-xs my-5">
-        取款遇到问题？联系<span className="text-[#4080ff]">人工客服</span>解决
+        取款遇到问题？联系<span className="text-secondary">人工客服</span>解决
       </div>
     </>
   );

@@ -8,7 +8,11 @@ import footer_links_2_transparent from "@/assets/images/footer_links_2_transpare
 import footer_links_3 from "@/assets/images/footer_links_3.webp";
 import footer_links_3_transparent from "@/assets/images/footer_links_3_transparent.webp";
 
-const FooterLinks = ({ setPaddingBottom }) => {
+const FooterLinks = (
+  {
+    // setPaddingBottom
+  }
+) => {
   const links = [
     {
       title: "首页",
@@ -30,11 +34,11 @@ const FooterLinks = ({ setPaddingBottom }) => {
     },
   ];
   const LinksRef = useRef(null);
-  useEffect(() => {
-    if (LinksRef.current) {
-      setPaddingBottom(LinksRef.current.clientHeight);
-    }
-  }, [LinksRef.current]);
+  // useEffect(() => {
+  //   if (LinksRef.current) {
+  //     setPaddingBottom(LinksRef.current.clientHeight);
+  //   }
+  // }, [LinksRef.current]);
   return (
     <>
       <div ref={LinksRef} className="fixed bottom-0 left-0 right-0">

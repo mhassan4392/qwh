@@ -7,7 +7,7 @@ import CenterWallet from "../../components/pages/wallet/mywallet/CenterWallet";
 import VirtualWallet from "../../components/pages/wallet/mywallet/VirtualWallet";
 const MyWallet = () => {
   return (
-    <div className="overflow-y-auto h-full">
+    <div className="overflow-y-auto h-full bg-common-bg">
       <div className="relative">
         <img src={wallet_page_bg} className="w-full h-[200px]" alt="" />
         <div className="fixed top-0 left-0 right-0 flex items-center justify-between px-4 py-4 z-50">

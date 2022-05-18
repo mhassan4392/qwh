@@ -31,14 +31,14 @@ const CenterWallet = () => {
               <img src={icon_wallet_wallet} className="w-3" alt="" />
               <div className="text-[9px]">中心钱包</div>
             </div>
-            <div className="text-[#4080ff] text-center">￥ 0.00</div>
+            <div className="text-secondary text-center">￥ 0.00</div>
           </div>
           <div>
             <div className="flex space-x-2">
               <img src={icon_wallet_wallet} className="w-3" alt="" />
               <div className="text-[9px]">中心钱包</div>
             </div>
-            <div className="text-[#4080ff] text-center">￥ 0.00</div>
+            <div className="text-secondary text-center">￥ 0.00</div>
           </div>
         </div>
 
@@ -66,7 +66,7 @@ const CenterWallet = () => {
                 onClick={() => setShow(!show)}
               >
                 <div className="text-primary">展开明细</div>
-                <div className="text-blue-400">
+                <div className="text-secondary">
                   <HiOutlineChevronDoubleDown
                     className={`transform transition-all duration-500 ${
                       show ? "rotate-180" : ""
@@ -76,7 +76,7 @@ const CenterWallet = () => {
               </div>
             </div>
             {show && (
-              <div className="bg-[#f9f9f9] text-[8px]">
+              <div className="bg-light-bg text-[8px]">
                 <div className="flex items-center justify-between py-2 px-2 border-t">
                   <div className="flex flex-col items-center basis-1/4">
                     <div>球王会体育</div>

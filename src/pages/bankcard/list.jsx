@@ -19,7 +19,7 @@ const BankCardList = () => {
     { title: "EBpay地址", id: 2 },
   ];
   return (
-    <div className="bg-[#f7f9fe] h-full flex flex-col">
+    <div className="bg-common-bg h-full flex flex-col">
       <header>
         <nav className="bg-white flex items-center justify-center relative py-3">
           <Link
@@ -35,7 +35,7 @@ const BankCardList = () => {
       <div className="grow h-full overflow-y-auto">
         <Tabs defaultTab={0}>
           <div className="px-4 py-3 bg-white">
-            <TabsButtons className="flex items-center justify-between bg-[#f7f9fe] cursor-pointer rounded-lg overflow-hidden">
+            <TabsButtons className="flex items-center justify-between bg-common-bg cursor-pointer rounded-lg overflow-hidden">
               {tabs.map((tab, i) => (
                 <TabButton
                   className="basis-1/3 py-0.5 text-sm rounded-lg text-light"

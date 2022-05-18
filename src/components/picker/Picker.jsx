@@ -24,10 +24,10 @@ const Pick = ({
         ></div>
         <div className={pickerModalClass}>
           <header className="flex items-center justify-between">
-            <div className="text-blue-400" onClick={toggle}>
+            <div className="text-secondary" onClick={toggle}>
               {buttonText}
             </div>
-            <div className="text-blue-400">{text}</div>
+            <div className="text-secondary">{text}</div>
           </header>
           <Picker
             optionGroups={options}

@@ -36,7 +36,7 @@ const Message = () => {
   const [modal, setModal] = useState(false);
 
   return (
-    <div className="bg-[#f7f9fe] h-full flex flex-col">
+    <div className="bg-common-bg h-full flex flex-col">
       <Tabs className="h-full flex flex-col">
         <header className="bg-white px-4 mb-2">
           <nav className="mb-2 flex items-center justify-between relative py-3">
@@ -92,7 +92,7 @@ const Message = () => {
                 ))}
 
                 {!tab.no && (
-                  <div className="h-full flex items-center justify-center">
+                  <div className="h-full bg-common-bg flex items-center justify-center">
                     <p className="text-light text-sm">还没有新的消息</p>
                   </div>
                 )}
