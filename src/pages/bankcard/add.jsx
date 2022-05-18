@@ -101,7 +101,7 @@ const BankCardAdd = () => {
         open={modal}
         onOutsideClick={() => setModal(false)}
         align="end"
-        className="!w-screen m-0 !mt-10 rounded-b-none"
+        className="!w-screen !m-0 !mt-10 rounded-b-none"
         containerClass="bg-black bg-opacity-50"
       >
         <Modal.Header className="relative text-center">
@@ -110,7 +110,7 @@ const BankCardAdd = () => {
             <div onClick={() => setModal(false)}>取消</div>
           </div>
         </Modal.Header>
-        <Modal.Body className="p-0">
+        <Modal.Body className="!p-0">
           <div>
             {selects.map((selected, i) => (
               <div
