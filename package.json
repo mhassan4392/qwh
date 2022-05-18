@@ -14,11 +14,8 @@
     "react-helmet": "^6.1.0",
     "react-icons": "^4.3.1",
     "react-mobile-picker": "^0.1.13",
-    "react-picker": "^1.2.17",
     "react-router-dom": "^6.3.0",
-    "react-scrollable-picker": "^1.0.2",
     "react-slick": "^0.29.0",
-    "rmc-picker": "^5.0.10",
     "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
