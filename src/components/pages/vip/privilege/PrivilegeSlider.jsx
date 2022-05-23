@@ -27,7 +27,9 @@ const PrivilegeSlider = () => {
   }, [nav1, nav2, activeSlide]);
 
   const handleSlideChange = (i) => {
-    if (i < 3) {
+    if (i == activeSlide) {
+      setTranslateX(translateX);
+    } else if (i < 3) {
       setTranslateX(0);
     } else if (i > 6) {
       setTranslateX(
@@ -73,7 +75,7 @@ const PrivilegeSlider = () => {
             {[...Array(10)].map((btn, i) => (
               <div
                 onClick={() => handleSlideChange(i)}
-                className={`bg-[#d3d5e0] border-2 border-[#d3d5e0] py-0.5 px-2 text-xs rounded-full ${
+                className={`bg-[#d3d5e0] border-[3px] border-[#d3d5e0] py-0.5 px-2 text-xs rounded-full cursor-pointer ${
                   activeSlide == i ? "!bg-primary text-white" : ""
                 }`}
               >
@@ -116,6 +118,9 @@ const PrivilegeSlider = () => {
           </div>
         ))}
       </Slider>
+      <div className="flex items-center justify-end mx-3 text-xs pt-2 px-2">
+        {activeSlide + 1}/ <span className="text-light">10</span>
+      </div>
     </div>
   );
 };
