@@ -1,0 +1,14 @@
+.range-slider {
+  appearance: none;
+  @apply rounded-full h-1.5 cursor-pointer shadow;
+}
+
+.range-slider::-webkit-slider-thumb {
+  appearance: none;
+  overflow: visible;
+  background-image: url("/src/assets//images/vip/vip_img.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  @apply w-6 h-6 rounded-full cursor-pointer;
+}

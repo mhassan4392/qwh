@@ -10,6 +10,7 @@ import BankCardList from "@/pages/bankcard/list";
 import WalletWithdraw from "@/pages/wallet/withdraw";
 import WalletTransfer from "@/pages/wallet/transfer";
 import MyDeposit from "@/pages/wallet/mydeposit";
+import Privilege from "@/pages/vip/privilege";
 
 const AllRoutes = () => {
   return (
@@ -27,6 +28,7 @@ const AllRoutes = () => {
       <Route path="/wallet/mydeposit" element={<MyDeposit />} />
       <Route path="/bankcard/add" element={<BankCardAdd />} />
       <Route path="/bankcard/list" element={<BankCardList />} />
+      <Route path="/vip/privilege" element={<Privilege />} />
     </Routes>
   );
 };
