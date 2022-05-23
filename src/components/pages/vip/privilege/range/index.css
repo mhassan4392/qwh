@@ -1,6 +1,6 @@
 .range-slider {
   appearance: none;
-  @apply rounded-full h-1.5 cursor-pointer shadow;
+  @apply rounded-full h-2 cursor-pointer shadow-lg shadow-gray-800;
 }
 
 .range-slider::-webkit-slider-thumb {
@@ -10,5 +10,5 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: contain;
-  @apply w-6 h-6 rounded-full cursor-pointer;
+  @apply w-7 h-7 rounded-full cursor-pointer;
 }
