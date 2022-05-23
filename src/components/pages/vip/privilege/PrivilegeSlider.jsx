@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 
 import Slider from "react-slick";
 import "./Slider.css";
@@ -21,10 +21,6 @@ const PrivilegeSlider = () => {
     slidesToShow: 1,
     slidesToScroll: 1,
   };
-
-  useEffect(() => {
-    console.log(nav1, nav2);
-  }, [nav1, nav2, activeSlide]);
 
   const handleSlideChange = (i) => {
     if (i == activeSlide) {
