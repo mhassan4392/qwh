@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import Range from "./range/Range";
 
 import vip_medal_vip0_shadow from "@/assets/images/vip/vip_medal_vip0_shadow.webp";
+import vip_bg from "@/assets/images/vip/vip_bg.webp";
 import profile from "@/assets/images/profile.png";
 
 const PrivilegeHeader = () => {
@@ -12,7 +13,7 @@ const PrivilegeHeader = () => {
       <div
         className="px-4 bg-no-repeat bg-cover bg-bottom"
         style={{
-          backgroundImage: 'url("/src/assets//images/vip/vip_bg.webp")',
+          backgroundImage: `url("${vip_bg}")`,
         }}
       >
         <div className="flex items-center justify-center relative py-2">
