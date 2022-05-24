@@ -25,15 +25,21 @@ const CodeModal = ({ open, onClose }) => {
         </Modal.Body>
         <Modal.Footer className="py-0 flex items-center justify-between text-center">
           <div
-            onClick={onClose}
+            onClick={() => {
+              setCode("");
+              onClose();
+            }}
             className="basis-1/2 border-r py-3 cursor-pointer"
           >
             取消
           </div>
           <div
-            onClick={onClose}
+            onClick={() => {
+              setCode("");
+              onClose();
+            }}
             className={`basis-1/2 py-3 cursor-pointer ${
-              code.length != 4 ? "text-light" : ""
+              code.length != 4 || !code.length ? "text-light" : ""
             }`}
           >
             确定
