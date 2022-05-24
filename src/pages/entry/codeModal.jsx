@@ -41,7 +41,8 @@ const CodeModal = ({ open, onClose }) => {
             autoFocus
             type="number"
             ref={inputRef}
-            className="hidden"
+            className=""
+            style={{ transform: "translateX(-500px)" }}
             onFocus={() => console.log("hello")}
             onClick={() => console.log("click")}
           />
