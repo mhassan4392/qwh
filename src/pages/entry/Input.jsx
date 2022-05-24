@@ -15,16 +15,16 @@ const FourDigitInput = ({ onChange = () => {} }) => {
   };
 
   useEffect(() => {
-    if (isMounted.current) {
-      window.addEventListener("keydown", onKeyDown);
-    } else {
-      isMounted.current = true;
-    }
+    // if (isMounted.current) {
+    window.addEventListener("keydown", onKeyDown);
+    // } else {
+    //   isMounted.current = true;
+    // }
 
     return () => {
       window.removeEventListener("keydown", onKeyDown);
     };
-  }, [isMounted.current, value]);
+  }, [value]);
 
   return (
     <div className="flex items-center justify-between">
