@@ -61,7 +61,7 @@ const BankCardList = () => {
           <div className="px-4">
             <TabsItems>
               {tabs.map((tab, i) => (
-                <TabItem tab={tab.id} defaultTab={tab.id == 0}>
+                <TabItem key={i} tab={tab.id} defaultTab={tab.id == 0}>
                   <div className="px-6 mt-20">
                     <img src={nodata} className="w-full" alt="" />
                   </div>

@@ -1,5 +1,10 @@
 import { Route, Routes } from "react-router-dom";
+
+// layouts
 import HomeLayout from "@/layouts/home";
+import EntryLayout from "@/layouts/entry";
+
+// pages
 import Index from "@/pages";
 import Mine from "@/pages/mine";
 import Message from "@/pages/message";
@@ -11,6 +16,8 @@ import WalletWithdraw from "@/pages/wallet/withdraw";
 import WalletTransfer from "@/pages/wallet/transfer";
 import MyDeposit from "@/pages/wallet/mydeposit";
 import Privilege from "@/pages/vip/privilege";
+import Login from "@/pages/entry/login";
+import Register from "@/pages/entry/register";
 
 const AllRoutes = () => {
   return (
@@ -18,6 +25,11 @@ const AllRoutes = () => {
       <Route path="/" element={<HomeLayout />}>
         <Route index element={<Index />} />
         <Route path="/mine" element={<Mine />} />
+      </Route>
+
+      <Route path="/entry" element={<EntryLayout />}>
+        <Route path="/entry/login" element={<Login />} />
+        <Route path="/entry/register" element={<Register />} />
       </Route>
 
       <Route path="/message" element={<Message />} />

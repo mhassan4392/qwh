@@ -55,7 +55,7 @@ const MyDeposit = () => {
 
           <TabsItems>
             {tabs.map((tab, i) => (
-              <TabItem tab={tab.id} defaultTab={tab.id == 0}>
+              <TabItem tab={tab.id} key={i} defaultTab={tab.id == 0}>
                 {tab.id == 0 && <TabOne />}
                 {tab.id == 1 && <TabTwo />}
               </TabItem>

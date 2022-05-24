@@ -55,7 +55,7 @@ const WalletTransfer = () => {
 
           <TabsItems>
             {tabs.map((tab, i) => (
-              <TabItem tab={tab.id} defaultTab={tab.id == 0}>
+              <TabItem key={i} tab={tab.id} defaultTab={tab.id == 0}>
                 {tab.id == 0 && <TabOne />}
                 {tab.id == 1 && <TabTwo />}
               </TabItem>

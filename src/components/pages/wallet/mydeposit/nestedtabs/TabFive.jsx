@@ -49,6 +49,7 @@ const TabFive = () => {
         <div className="grid grid-cols-4 gap-4">
           {amounts.map((amount, i) => (
             <div
+              key={i}
               onClick={() => setValue(amount)}
               className={`border py-2 text-center rounded ${
                 amount == value ? "border-secondary icon-select-bg" : ""

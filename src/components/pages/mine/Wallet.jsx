@@ -8,10 +8,10 @@ import account_vip from "@/assets/images/account_vip.webp";
 import { Link } from "react-router-dom";
 
 const features = [
-  { title: "存款", image: account_moneysave },
-  { title: "转账", image: account_moneytransfer },
-  { title: "取款", image: account_moneydraw },
-  { title: "VIP", image: account_vip },
+  { title: "存款", image: account_moneysave, to: "/wallet/mydeposit" },
+  { title: "转账", image: account_moneytransfer, to: "/wallet/transfer" },
+  { title: "取款", image: account_moneydraw, to: "/wallet/withdraw" },
+  { title: "VIP", image: account_vip, to: "/vip/privilege" },
 ];
 const Wallet = () => {
   return (
@@ -32,12 +32,16 @@ const Wallet = () => {
 
           <div className="flex items-center justify-between account-bottom">
             {features.map((feature, i) => (
-              <div key={i} className="space-y-1 flex flex-col items-center">
+              <Link
+                to={feature.to}
+                key={i}
+                className="space-y-1 flex flex-col items-center"
+              >
                 <img src={feature.image} className="account-image" alt="" />
                 <div className="text-xs sm:text-sm md:text-lg text-center">
                   {feature.title}
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         </div>

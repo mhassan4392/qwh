@@ -70,6 +70,7 @@ const PrivilegeSlider = () => {
           >
             {[...Array(10)].map((btn, i) => (
               <div
+                key={i}
                 onClick={() => handleSlideChange(i)}
                 className={`bg-[#d3d5e0] border-[3px] border-[#d3d5e0] py-0.5 px-2 text-xs rounded-full cursor-pointer ${
                   activeSlide == i ? "!bg-primary text-white" : ""

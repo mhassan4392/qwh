@@ -19,7 +19,7 @@ const TabThree = () => {
           <div className="flex items-center justify-between mt-2">
             <div className="flex items-center justify-between">
               {steps.map((step, i) => (
-                <div className="relative">
+                <div key={i} className="relative">
                   <div className="absolute text-[8px] inset-0 flex items-center justify-center">
                     {step}
                   </div>

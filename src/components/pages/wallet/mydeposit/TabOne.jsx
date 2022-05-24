@@ -73,7 +73,7 @@ const TabOne = () => {
 
         <TabsItems>
           {tabs.map((tab, i) => (
-            <TabItem key={tab.title} tab={i} defaultTab={i == 0}>
+            <TabItem key={i} tab={i} defaultTab={i == 0}>
               {i == 0 && <NestedTabOne />}
               {i == 1 && <NestedTabTwo />}
               {i == 2 && <NestedTabThree />}
