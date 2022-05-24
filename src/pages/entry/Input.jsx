@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 
 const FourDigitInput = ({ onChange = () => {} }) => {
   const [value, setValue] = useState("");
-  const inputRef = useRef(null);
 
   const onKeyDown = (e) => {
     if (isFinite(e.key) && value.length < 4) {
@@ -15,9 +14,6 @@ const FourDigitInput = ({ onChange = () => {} }) => {
   };
 
   useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.click();
-    }
     window.addEventListener("keydown", onKeyDown);
 
     return () => {
@@ -26,14 +22,7 @@ const FourDigitInput = ({ onChange = () => {} }) => {
   }, [value]);
 
   return (
-    <div
-      className="flex items-center justify-between"
-      onClick={() => {
-        if (inputRef.current) {
-          inputRef.current.click();
-        }
-      }}
-    >
+    <div className="flex items-center justify-between">
       {[...Array(4)].map((btn, i) => (
         <div
           className="w-10 h-10 border border-light flex items-center justify-center rounded-md"
@@ -42,8 +31,6 @@ const FourDigitInput = ({ onChange = () => {} }) => {
           {value[i]}
         </div>
       ))}
-
-      <input type="number" className="hidden" ref={inputRef} />
     </div>
   );
 };
