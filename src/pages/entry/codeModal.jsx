@@ -13,7 +13,13 @@ const CodeModal = ({ open, onClose }) => {
   }, [open]);
   return (
     <div>
-      <Modal open={open} onClick={() => inputRef.current.click()}>
+      <Modal
+        open={open}
+        onClick={() => {
+          inputRef.current.click();
+          inputRef.current.focus();
+        }}
+      >
         <Modal.Body className="text-sm text-center">
           <div className="space-y-3">
             <p>安全校验</p>
