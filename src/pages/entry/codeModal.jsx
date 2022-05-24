@@ -41,10 +41,8 @@ const CodeModal = ({ open, onClose }) => {
             autoFocus
             type="number"
             ref={inputRef}
-            className=""
-            style={{ transform: "translateX(-500px)" }}
-            onFocus={() => console.log("hello")}
-            onClick={() => console.log("click")}
+            className="absolute"
+            style={{ transform: "translateX(-5000px)" }}
           />
         </Modal.Body>
         <Modal.Footer className="py-0 flex items-center justify-between text-center">
