@@ -38,6 +38,7 @@ const CodeModal = ({ open, onClose }) => {
           </div>
 
           <input
+            autoFocus
             type="number"
             ref={inputRef}
             className="hidden"
