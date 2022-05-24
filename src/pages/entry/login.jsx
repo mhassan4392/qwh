@@ -72,7 +72,6 @@ const Login = () => {
                         />
                         <button
                           onClick={() => {
-                            console.log(codeRef.current);
                             const input =
                               codeRef.current.querySelector("input");
 
