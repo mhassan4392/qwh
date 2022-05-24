@@ -7,7 +7,7 @@ import icon_online_service from "@/assets/images/entry/icon-online-service.svg";
 const EntryLayout = () => {
   return (
     <div
-      className="h-screen bg-center bg-cover relative flex flex-col justify-around overflow-y-auto"
+      className="h-screen bg-center bg-cover relative flex flex-col overflow-x-hidden overflow-y-auto"
       style={{ backgroundImage: `url(${login_bg})` }}
     >
       <div className="absolute inset-0 z-0 bg-black bg-opacity-20"></div>

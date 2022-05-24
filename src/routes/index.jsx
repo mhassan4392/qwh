@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 // layouts
 import HomeLayout from "@/layouts/home";
@@ -19,29 +19,34 @@ import Privilege from "@/pages/vip/privilege";
 import Login from "@/pages/entry/login";
 import Register from "@/pages/entry/register";
 
+import { AnimatePresence } from "framer-motion";
+
 const AllRoutes = () => {
+  const location = useLocation();
   return (
-    <Routes>
-      <Route path="/" element={<HomeLayout />}>
-        <Route index element={<Index />} />
-        <Route path="/mine" element={<Mine />} />
-      </Route>
+    <AnimatePresence exitBeforeEnter>
+      <Routes location={location} key={location.pathname}>
+        <Route path="/" element={<HomeLayout />}>
+          <Route index element={<Index />} />
+          <Route path="/mine" element={<Mine />} />
+        </Route>
 
-      <Route path="/entry" element={<EntryLayout />}>
-        <Route path="/entry/login" element={<Login />} />
-        <Route path="/entry/register" element={<Register />} />
-      </Route>
+        <Route path="/entry" element={<EntryLayout />}>
+          <Route path="/entry/login" element={<Login />} />
+          <Route path="/entry/register" element={<Register />} />
+        </Route>
 
-      <Route path="/message" element={<Message />} />
-      <Route path="/userinfo/main" element={<Main />} />
-      <Route path="/wallet/mywallet" element={<MyWallet />} />
-      <Route path="/wallet/withdraw" element={<WalletWithdraw />} />
-      <Route path="/wallet/transfer" element={<WalletTransfer />} />
-      <Route path="/wallet/mydeposit" element={<MyDeposit />} />
-      <Route path="/bankcard/add" element={<BankCardAdd />} />
-      <Route path="/bankcard/list" element={<BankCardList />} />
-      <Route path="/vip/privilege" element={<Privilege />} />
-    </Routes>
+        <Route path="/message" element={<Message />} />
+        <Route path="/userinfo/main" element={<Main />} />
+        <Route path="/wallet/mywallet" element={<MyWallet />} />
+        <Route path="/wallet/withdraw" element={<WalletWithdraw />} />
+        <Route path="/wallet/transfer" element={<WalletTransfer />} />
+        <Route path="/wallet/mydeposit" element={<MyDeposit />} />
+        <Route path="/bankcard/add" element={<BankCardAdd />} />
+        <Route path="/bankcard/list" element={<BankCardList />} />
+        <Route path="/vip/privilege" element={<Privilege />} />
+      </Routes>
+    </AnimatePresence>
   );
 };
 

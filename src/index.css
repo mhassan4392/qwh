@@ -8,3 +8,23 @@
   background-size: 15px;
   background-position: bottom right;
 }
+
+.input-control {
+  @apply flex items-center relative;
+}
+
+.input-control input {
+  @apply bg-black bg-opacity-40 rounded-full border-0 w-full focus:ring-0 px-12 placeholder:text-sm placeholder:text-white placeholder:focus:text-light h-12;
+}
+
+.input-control .right-element {
+  @apply absolute right-0 mr-3 text-light text-xl;
+}
+
+.input-control .left-element {
+  @apply absolute left-0 ml-3 text-light text-2xl;
+}
+
+.error-element {
+  @apply text-primary text-xs pl-3 mt-0.5;
+}
