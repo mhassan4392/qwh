@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import signup_icon from "@/assets/images/entry/signup_icon.webp";
 import { BiUserCircle } from "react-icons/bi";
 import {
@@ -22,6 +22,29 @@ const Login = () => {
   const [modal, setModal] = useState(false);
 
   const codeRef = useRef();
+
+  const [time, setTime] = useState(0);
+
+  let interval = useRef(null);
+
+  const setTimer = () => {
+    clearInterval(interval.current);
+    setTime(60);
+  };
+
+  useEffect(() => {
+    if (time == 60) {
+      interval.current = setInterval(() => {
+        setTime((time) => time - 1);
+      }, 1000);
+    } else if (time == 0) {
+      clearInterval(interval.current);
+    }
+  }, [time]);
+
+  useEffect(() => {
+    return () => clearInterval(interval.current);
+  }, []);
 
   const {
     register,
@@ -79,9 +102,11 @@ const Login = () => {
                             input.blur();
                           }}
                           type="button"
-                          className="text-[10px] absolute right-1 h-10 bg-secondary rounded-full px-6 bg-opacity-80"
+                          className={`text-[10px] absolute right-1 h-10 bg-secondary rounded-full w-28 bg-opacity-80 ${
+                            time ? "text-lg" : ""
+                          }`}
                         >
-                          获取验证码
+                          {time ? time + "s" : "获取验证码"}
                         </button>
                       </div>
                       {errors.code && (
@@ -195,7 +220,11 @@ const Login = () => {
           </Link>
         </div>
       </motion.div>
-      <CodeModal open={modal} onClose={() => setModal(false)} />
+      <CodeModal
+        open={modal}
+        onClose={() => setModal(false)}
+        setTimer={setTimer}
+      />
     </>
   );
 };

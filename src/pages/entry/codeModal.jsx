@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Modal } from "@/components/modal";
 import FourDigitInput from "./Input";
-const CodeModal = ({ open, onClose }) => {
+const CodeModal = ({ open, onClose, setTimer = () => {} }) => {
   const [code, setCode] = useState("");
   const inputRef = useRef(null);
 
@@ -60,6 +60,7 @@ const CodeModal = ({ open, onClose }) => {
               if (code.length == 4) {
                 setCode("");
                 onClose();
+                setTimer();
               }
             }}
             className={`basis-1/2 py-3 cursor-pointer ${
