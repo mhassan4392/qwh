@@ -1,5 +1,5 @@
 import axios from "axios";
 const Axios = axios.create({
-  baseURL: "https://wwzznn.com",
+  baseURL: "https://dev.wwzznn.com/",
 });
 export default Axios;
