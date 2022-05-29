@@ -4,7 +4,7 @@ import banner_audio from "@/assets/images/banner_audio.webp";
 import banner_button from "@/assets/images/banner_button.webp";
 import "./Banner.css";
 import NotificationModal from "./NotificationModel";
-const Banner = () => {
+const Banner = ({ messages }) => {
   const bannerRef = useRef(null);
   const [transform, setTransform] = useState("100%");
 
@@ -15,6 +15,8 @@ const Banner = () => {
   }, [bannerRef.current]);
 
   const [modal, setModal] = useState(false);
+
+  const [modalMessage, setModalMessage] = useState({});
   return (
     <>
       <div className="px-4 bg-white">
@@ -22,31 +24,25 @@ const Banner = () => {
           <div className="mr-1">
             <img src={banner_audio} className="w-4" alt="" />
           </div>
-          <div
-            onClick={() => setModal(true)}
-            ref={bannerRef}
-            className="grow h-4 overflow-hidden relative"
-          >
+          <div ref={bannerRef} className="grow h-4 overflow-hidden relative">
             <div
               style={{
                 transform: `translateX(${transform})`,
               }}
-              className="absolute inset-0 min-w-max flex items-center banner-content text-xs text-light"
+              className="absolute inset-0 min-w-max flex items-center banner-content text-xs text-light space-x-10"
             >
-              <span>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptatum eaque perspiciatis, quis maiores aliquid velit
-                debitis incidunt nisi at, voluptatem, perferendis iure?
-                Voluptates, repellendus. Doloremque labore repellat commodi!
-                Esse, quod?
-              </span>
-              <span>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptatum eaque perspiciatis, quis maiores aliquid velit
-                debitis incidunt nisi at, voluptatem, perferendis iure?
-                Voluptates, repellendus. Doloremque labore repellat commodi!
-                Esse, quod?
-              </span>
+              {messages.map((message, i) => (
+                <span
+                  className="flex items-center space-x-5"
+                  onClick={() => {
+                    setModalMessage(message);
+                    setModal(true);
+                  }}
+                >
+                  <span>{message.Title}</span>
+                  <span>{message.Content}</span>
+                </span>
+              ))}
             </div>
           </div>
           <div className="flex justify-end">
@@ -55,7 +51,11 @@ const Banner = () => {
         </div>
       </div>
 
-      <NotificationModal open={modal} onClose={() => setModal(false)} />
+      <NotificationModal
+        notification={modalMessage}
+        open={modal}
+        onClose={() => setModal(false)}
+      />
     </>
   );
 };

@@ -2,7 +2,22 @@ import { useState, useEffect } from "react";
 import Modal from "@/components/modal/Modal";
 import { BsX } from "react-icons/bs";
 import index_modal_image from "@/assets/images/index_modal_image.jpg";
-const StartModal = () => {
+import Slider from "react-slick";
+import { Link } from "react-router-dom";
+const StartModal = ({ ads }) => {
+  const [nav1, setNav1] = useState();
+  const [nav2, setNav2] = useState();
+  const [activeSlide, setActiveSlide] = useState(0);
+  const settings = {
+    infinite: true,
+    speed: 300,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    afterChange: (i) => {
+      setActiveSlide(i);
+    },
+  };
   const [modal, setModal] = useState(false);
   useEffect(() => {
     setTimeout(() => setModal(true), 2000);
@@ -21,20 +36,41 @@ const StartModal = () => {
             <BsX className="text-2xl" onClick={() => setModal(false)} />
           </div>
         </Modal.Header>
-        <Modal.Body className="p-0">
-          <img src={index_modal_image} className="w-full" alt="" />
+        <Modal.Body className="pb-0">
+          <div className="modal-slider overflow-hidden">
+            <Slider
+              {...settings}
+              asNavFor={nav2}
+              ref={(slider1) => setNav1(slider1)}
+            >
+              {ads.map((slide, i) => (
+                <Link to={slide.Link || "/"}>
+                  <img key={i} src={slide.ImgUrl} className="w-full" alt="" />
+                </Link>
+              ))}
+            </Slider>
+          </div>
         </Modal.Body>
-        <Modal.Footer className="relative">
-          <div className="absolute bottom-[-20px] left-0 right-0 space-x-2 z-10 flex items-center justify-center">
-            <button className="w-2 h-2 bg-white rounded-full"></button>
-            <button className="w-2 h-2 bg-white bg-opacity-25 rounded-full"></button>
-          </div>
-
-          <div className="flex items-center space-x-1 text-sm text-light">
-            <input type="radio" name="" id="" />
-            <label htmlFor="">Lorem ipsum dolor sit.</label>
-          </div>
-        </Modal.Footer>
+        {ads.length > 0 && (
+          <Modal.Footer className="!p-0 relative shadow-none">
+            <div className="absolute inset-0 -bottom-10 flex items-center justify-center space-x-2">
+              {ads.map((slide, i) => (
+                <div
+                  onClick={() => {
+                    nav1.slickGoTo(i);
+                    setActiveSlide(i);
+                  }}
+                  key={i}
+                  className={`w-3 h-3 rounded-full ${
+                    activeSlide == i
+                      ? "bg-white bg-opacity-10"
+                      : "bg-black bg-opacity-50"
+                  }`}
+                ></div>
+              ))}
+            </div>
+          </Modal.Footer>
+        )}
       </Modal>
     </div>
   );

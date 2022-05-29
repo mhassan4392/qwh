@@ -30,7 +30,14 @@ const AllRoutes = () => {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<HomeLayout />}>
           <Route index element={<Index />} />
-          <Route path="/mine" element={<Mine />} />
+          <Route
+            path="/mine"
+            element={
+              <ProtectedRoute>
+                <Mine />
+              </ProtectedRoute>
+            }
+          />
         </Route>
 
         <Route path="/entry" element={<EntryLayout />}>

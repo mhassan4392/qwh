@@ -1,7 +1,8 @@
 import Slider from "react-slick";
 import SliderImage from "@/assets/images/slider.jpg";
 import "./Slider.css";
-const IndexSlider = () => {
+import { Link } from "react-router-dom";
+const IndexSlider = ({ slides = [] }) => {
   const settings = {
     dots: true,
     infinite: true,
@@ -13,9 +14,11 @@ const IndexSlider = () => {
   return (
     <div className="index-slider bg-white px-4 relative overflow-hidden">
       <Slider {...settings}>
-        {[...Array(5)].map((image, i) => (
+        {slides.map((slide, i) => (
           <div key={i} className="h-full">
-            <img src={SliderImage} className="rounded-xl" alt="" />
+            <Link to={slide.Link}>
+              <img src={slide.ImgUrl} className="rounded-xl" alt="" />
+            </Link>
           </div>
         ))}
       </Slider>
