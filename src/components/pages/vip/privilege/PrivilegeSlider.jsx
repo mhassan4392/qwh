@@ -20,6 +20,37 @@ const PrivilegeSlider = () => {
     speed: 300,
     slidesToShow: 1,
     slidesToScroll: 1,
+    afterChange: (i) => {
+      if (i == activeSlide) {
+        setTranslateX(translateX);
+      } else if (i < 3) {
+        setTranslateX(0);
+      } else if (i > 6) {
+        setTranslateX(
+          (btnRef.current.clientWidth - btnContainerRef.current.clientWidth) *
+            -1
+        );
+      } else {
+        if (i > activeSlide) {
+          if (i == 3) {
+            setTranslateX(-70);
+          }
+          if (i == 4) {
+            setTranslateX(-140);
+          }
+          if (i == 5) {
+            setTranslateX(-210);
+          }
+          if (i == 6) {
+            setTranslateX(-280);
+          }
+        } else {
+          setTranslateX(translateX + 70);
+        }
+      }
+      // nav1.slickGoTo(i);
+      setActiveSlide(i);
+    },
   };
 
   const handleSlideChange = (i) => {
