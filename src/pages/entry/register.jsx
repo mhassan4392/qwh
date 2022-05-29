@@ -76,6 +76,7 @@ const Register = () => {
           <span>回</span>
           <span>登</span>
           <span>录</span>
+          <span></span>
         </Link>
         <div className="grow bg-black bg-opacity-40 rounded-r-lg py-6 px-4 h-[480px] flex flex-col justify-between">
           <h1 className="text-center">登录</h1>
