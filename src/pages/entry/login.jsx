@@ -74,7 +74,6 @@ const Login = () => {
     } else {
       data.navigate = navigate;
       await dispatch(login(data));
-      console.log(error);
     }
   });
 
