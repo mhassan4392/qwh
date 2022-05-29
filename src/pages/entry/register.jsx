@@ -19,15 +19,14 @@ import { useForm } from "react-hook-form";
 
 const Register = () => {
   useEffect(() => {
-    // Axios({
-    //   url: "/SignUp/validCode",
-    //   method: "POST",
-    //   responseType: "blob",
-    // }).then((res) => {
-    //   const url = URL.createObjectURL(res.data);
-    //   setCodeImage(url);
-    // });
-    Axios({ url: "/api/ox/launch" }).then((res) => console.log(res));
+    Axios({
+      url: "/SignUp/validCode",
+      method: "POST",
+      responseType: "blob",
+    }).then((res) => {
+      const url = URL.createObjectURL(res.data);
+      setCodeImage(url);
+    });
   }, []);
   const { loading, error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
