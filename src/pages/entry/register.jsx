@@ -19,14 +19,15 @@ import { useForm } from "react-hook-form";
 
 const Register = () => {
   useEffect(() => {
-    Axios({
-      url: "/SignUp/validCode",
-      method: "POST",
-      responseType: "blob",
-    }).then((res) => {
-      const url = URL.createObjectURL(res.data);
-      setCodeImage(url);
-    });
+    // Axios({
+    //   url: "/SignUp/validCode",
+    //   method: "POST",
+    //   responseType: "blob",
+    // }).then((res) => {
+    //   const url = URL.createObjectURL(res.data);
+    //   setCodeImage(url);
+    // });
+    Axios({ url: "/api/ox/launch" }).then((res) => console.log(res));
   }, []);
   const { loading, error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
@@ -50,19 +51,6 @@ const Register = () => {
     console.log(data);
     console.log(isValid);
   });
-
-  const checkfile = (e) => {
-    console.log(e.target.files[0]);
-
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      console.log(reader.result);
-      setCodeImage(reader.result);
-    };
-
-    reader.readAsDataURL(e.target.files[0]);
-  };
 
   return (
     <motion.div initial={{ x: "100%" }} animate={{ x: 0 }} exit={{ x: "100%" }}>
