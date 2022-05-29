@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import Axios from "@/utils/axios";
 
-const login = createAsyncThunk(
-  "auth/login",
+const authenticate = createAsyncThunk(
+  "auth/authenticate",
   async (data, { rejectWithValue }) => {
     try {
       const navigate = data.navigate;
@@ -23,4 +23,4 @@ const login = createAsyncThunk(
   }
 );
 
-export default login;
+export default authenticate;

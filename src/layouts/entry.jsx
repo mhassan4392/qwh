@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import login_bg from "@/assets/images/entry/login_bg.webp";
 import logo1 from "@/assets/images/entry/logo1.png";
 import logo2 from "@/assets/images/entry/logo2.png";
@@ -11,10 +11,12 @@ const EntryLayout = () => {
       style={{ backgroundImage: `url(${login_bg})` }}
     >
       {/* <div className="absolute inset-0 z-0 bg-black bg-opacity-20"></div> */}
-      <div className="h-full">
+      <div className="">
         <div className="relative z-10">
           <div className="px-3 flex flex-col justify-center space-y-4">
-            <img src={logo1} className="block" alt="" />
+            <Link to="/">
+              <img src={logo1} className="block" alt="" />
+            </Link>
             <img src={logo2} className="block" alt="" />
           </div>
           <Outlet />

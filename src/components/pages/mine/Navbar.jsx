@@ -5,7 +5,9 @@ import profile from "@/assets/images/profile.png";
 import account_vip0 from "@/assets/images/account_vip0.webp";
 import { BsChevronRight } from "react-icons/bs";
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 const MineNavbar = () => {
+  const { user } = useSelector((state) => state.auth);
   const imgs = [message_logo, settings_logo, chat_logo];
   return (
     <div className="px-4">
@@ -19,14 +21,14 @@ const MineNavbar = () => {
       </div>
 
       <NavLink
-        to="/userinfo/main"
+        to={user ? "/userinfo/main" : "/entry/login"}
         className="flex items-center justify-between"
       >
         <div className="flex space-x-2 items-center">
           <img src={profile} className="w-14" alt="" />
           <div>
             <div className="flex items-center">
-              aaron1990
+              {user?.UserName || "个人头像"}
               <img src={account_vip0} className="w-8 ml-2" alt="" />
             </div>
             <div className="text-xs text-light">

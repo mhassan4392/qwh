@@ -7,14 +7,25 @@ import {
   AiOutlineEyeInvisible,
 } from "react-icons/ai";
 import { MdOutlineCancel } from "react-icons/md";
+import { ImSpinner3 } from "react-icons/im";
 import { IoLanguage } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import CodeModal from "./codeModal";
 
+import { useSelector, useDispatch } from "react-redux";
+import login from "@/store/features/auth/login";
+import { setError } from "@/store/features/auth/authSlice";
+
 import { useForm } from "react-hook-form";
+import Alert from "../../components/Alert/Alert";
 
 const Login = () => {
+  const { loading, error } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
 
   const [getCode, setGetCode] = useState(false);
@@ -43,6 +54,7 @@ const Login = () => {
   }, [time]);
 
   useEffect(() => {
+    dispatch(setError(null));
     return () => clearInterval(interval.current);
   }, []);
 
@@ -54,13 +66,15 @@ const Login = () => {
     formState: { errors, isValid },
   } = useForm({ mode: "onChange" });
 
-  const { username } = watch();
+  const { name } = watch();
 
-  const onSubmit = handleSubmit((data) => {
+  const onSubmit = handleSubmit(async (data) => {
     if (!getCode) {
       setGetCode(true);
     } else {
-      console.log(data);
+      data.navigate = navigate;
+      await dispatch(login(data));
+      console.log(error);
     }
   });
 
@@ -77,6 +91,12 @@ const Login = () => {
 
             <div className="mb-12">
               <form onSubmit={onSubmit}>
+                {/* Error */}
+                <Alert
+                  error={error?.message || ""}
+                  open={error && error.type == "login"}
+                />
+
                 {/* code field */}
                 {getCode && (
                   <div>
@@ -120,27 +140,27 @@ const Login = () => {
 
                 {!getCode && (
                   <div>
-                    {/* username field */}
+                    {/* name field */}
                     <div className="my-5">
                       <div className="input-control">
                         <BiUserCircle className="left-element" />
                         <input
                           type="text"
                           placeholder="用户名"
-                          {...register("username", {
-                            required: "Username is required",
+                          {...register("name", {
+                            required: "name is required",
                           })}
                         />
-                        {username && (
+                        {name && (
                           <MdOutlineCancel
-                            onClick={() => setValue("username", "")}
+                            onClick={() => setValue("name", "")}
                             className="absolute right-0 mr-3 text-light text-xl"
                           />
                         )}
                       </div>
-                      {errors.username && (
+                      {errors.name && (
                         <div className="error-element">
-                          {errors.username.message}
+                          {errors.name.message}
                         </div>
                       )}
                     </div>
@@ -195,11 +215,16 @@ const Login = () => {
                 <div className="my-5">
                   <button
                     disabled={!isValid}
-                    className={`bg-primary w-full py-3 rounded-full ${
-                      !isValid ? "bg-opacity-60" : ""
+                    className={`w-full py-3 rounded-full flex items-center justify-center ${
+                      !isValid
+                        ? "bg-opacity-90 bg-primary-light"
+                        : "bg-primary bg-opacity-80"
                     }`}
                   >
-                    登录
+                    {!loading && loading != "login" && "登录"}
+                    {loading && loading == "login" && (
+                      <ImSpinner3 className="animate-spin text-2xl" />
+                    )}
                   </button>
                 </div>
 

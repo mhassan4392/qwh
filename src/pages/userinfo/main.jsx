@@ -3,8 +3,12 @@ import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import profile from "@/assets/images/profile.png";
 import { Link } from "react-router-dom";
 
-import Pick from "../../components/picker/Picker";
+import Pick from "@/components/picker/Picker";
+import { useSelector } from "react-redux";
+
 const Main = () => {
+  const { user } = useSelector((state) => state.auth);
+
   const [values1, setValues1] = useState({
     title: "Mr.",
   });
@@ -46,7 +50,9 @@ const Main = () => {
 
         <div className="flex items-center justify-between px-4 py-4 border-b bg-white">
           <div className="basis-1/3">用户名</div>
-          <div className="basis-2/3 text-right">aaron1990</div>
+          <div className="basis-2/3 text-right">
+            {user?.UserName || "个人头像"}
+          </div>
         </div>
 
         <Link

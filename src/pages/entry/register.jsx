@@ -11,9 +11,14 @@ import { IoLanguage } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
+import { useSelector, useDispatch } from "react-redux";
+
 import { useForm } from "react-hook-form";
 
 const Register = () => {
+  const { loading, error } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -159,11 +164,16 @@ const Register = () => {
             <div className="my-5">
               <button
                 disabled={!isValid}
-                className={`bg-primary w-full py-3 rounded-full ${
-                  !isValid ? "bg-opacity-60" : ""
+                className={`w-full py-3 rounded-full flex items-center justify-center ${
+                  !isValid
+                    ? "bg-opacity-90 bg-primary-light"
+                    : "bg-primary bg-opacity-80"
                 }`}
               >
-                注册
+                {!loading && loading != "login" && "登录"}
+                {loading && loading == "login" && (
+                  <ImSpinner3 className="animate-spin text-2xl" />
+                )}
               </button>
             </div>
           </form>

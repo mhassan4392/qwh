@@ -1,7 +1,15 @@
 import "./Spinner1.scss";
 const Spinner1 = () => {
   return (
-    <div className="lds-ellipsis">
+    <div class="lds-spinner">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
       <div></div>
       <div></div>
       <div></div>

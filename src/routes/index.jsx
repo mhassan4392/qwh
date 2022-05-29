@@ -21,6 +21,8 @@ import Register from "@/pages/entry/register";
 
 import { AnimatePresence } from "framer-motion";
 
+import ProtectedRoute from "@/middleware/ProtectedRoute";
+
 const AllRoutes = () => {
   const location = useLocation();
   return (
@@ -37,7 +39,14 @@ const AllRoutes = () => {
         </Route>
 
         <Route path="/message" element={<Message />} />
-        <Route path="/userinfo/main" element={<Main />} />
+        <Route
+          path="/userinfo/main"
+          element={
+            <ProtectedRoute>
+              <Main />{" "}
+            </ProtectedRoute>
+          }
+        />
         <Route path="/wallet/mywallet" element={<MyWallet />} />
         <Route path="/wallet/withdraw" element={<WalletWithdraw />} />
         <Route path="/wallet/transfer" element={<WalletTransfer />} />
