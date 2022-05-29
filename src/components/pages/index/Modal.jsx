@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Modal from "@/components/modal/Modal";
 import { BsX } from "react-icons/bs";
-import index_modal_image from "@/assets/images/index_modal_image.jpg";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
 const StartModal = ({ ads }) => {

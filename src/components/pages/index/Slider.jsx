@@ -1,5 +1,4 @@
 import Slider from "react-slick";
-import SliderImage from "@/assets/images/slider.jpg";
 import "./Slider.css";
 import { Link } from "react-router-dom";
 const IndexSlider = ({ slides = [] }) => {
