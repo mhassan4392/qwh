@@ -61,10 +61,8 @@ const StartModal = ({ ads }) => {
                     setActiveSlide(i);
                   }}
                   key={i}
-                  className={`w-3 h-3 rounded-full ${
-                    activeSlide == i
-                      ? "bg-white bg-opacity-10"
-                      : "bg-black bg-opacity-50"
+                  className={`w-2 h-2 rounded-full bg-white ${
+                    activeSlide == i ? "bg-opacity-75" : "bg-opacity-25"
                   }`}
                 ></div>
               ))}
