@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import promo_list_tag from "@/assets/images/promo/promo_list_tag.webp";
 
 const ListItem = ({ item }) => {
-  console.log(item);
   return (
     <div className="mx-3">
       <Link to={`/promo/list/${item.Id}`} className="my-4 block relative">

@@ -19,21 +19,21 @@ const PromoList = () => {
     );
   }, []);
 
-  const tabs = [
-    {
-      Id: 0,
-      Name: "全部优惠",
-      Dtls: [
-        {
-          Id: 1,
-          CatId: 1,
-          H5Img: "http://img.wwzznn.com/upload/202111/a04bae1c3961803c.jpeg",
-        },
-      ],
-    },
-    { Id: 0, Name: "限时活动", Dtls: [] },
-    { Id: 0, Name: "新人首存", Dtls: [] },
-  ];
+  //   const tabs = [
+  //     {
+  //       Id: 0,
+  //       Name: "全部优惠",
+  //       Dtls: [
+  //         {
+  //           Id: 1,
+  //           CatId: 1,
+  //           H5Img: "http://img.wwzznn.com/upload/202111/a04bae1c3961803c.jpeg",
+  //         },
+  //       ],
+  //     },
+  //     { Id: 0, Name: "限时活动", Dtls: [] },
+  //     { Id: 0, Name: "新人首存", Dtls: [] },
+  //   ];
   return (
     <div className="bg-common-bg h-full flex flex-col">
       <Tabs className="h-full flex flex-col">
@@ -42,7 +42,7 @@ const PromoList = () => {
             <h2>优惠活动</h2>
           </nav>
           <TabsButtons className="flex items-center justify-between">
-            {tabs.map((tab, i) => (
+            {list.map((tab, i) => (
               <TabButton
                 className="flex flex-col items-center pb-2 basis-1/4 relative"
                 tab={i}
@@ -64,7 +64,7 @@ const PromoList = () => {
         </header>
         <div className="grow h-full overflow-hidden bg-white">
           <TabsItems className="h-full w-screen">
-            {tabs.map((tab, i) => (
+            {list.map((tab, i) => (
               <TabItem
                 tab={i}
                 key={i}

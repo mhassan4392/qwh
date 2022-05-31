@@ -19,6 +19,7 @@ import TabFour from "../../components/pages/promo/TabFour";
 import Axios from "@/utils/axios";
 
 const PromoItem = () => {
+  const [item, setItem] = useState(null);
   const tabs = [
     { id: 0, title: "EB加赠1%" },
     { id: 1, title: "关于EBpay" },
@@ -34,7 +35,7 @@ const PromoItem = () => {
       method: "POST",
       data: { id: 1 },
       headers: { "Content-Type": "multipart/form-data" },
-    }).then((res) => console.log(res));
+    }).then((res) => setItem(res.data.info));
   }, []);
   return (
     <div className="bg-light-bg h-full flex flex-col">
@@ -51,7 +52,14 @@ const PromoItem = () => {
 
       <div>
         <div>
-          <img src={item_jpg} alt="" />
+          {item && (
+            <div className="text-center space-y-2">
+              <img src={item?.H5Cover} alt="" />
+              <div className="font-semibold">{item?.Title}</div>
+              <div className="text-xs">{item?.StartTime}</div>
+              <div className="text-sm">{item?.Description}</div>
+            </div>
+          )}
         </div>
 
         <Tabs className="">
