@@ -22,6 +22,8 @@ import Register from "@/pages/entry/register";
 import { AnimatePresence } from "framer-motion";
 
 import ProtectedRoute from "@/middleware/ProtectedRoute";
+import PromoList from "../pages/promo/list";
+import PromoItem from "../pages/promo/item";
 
 const AllRoutes = () => {
   const location = useLocation();
@@ -38,7 +40,10 @@ const AllRoutes = () => {
               </ProtectedRoute>
             }
           />
+          <Route path="/promo/list" element={<PromoList />} />
         </Route>
+
+        <Route path="/promo/list/:id" element={<PromoItem />} />
 
         <Route path="/entry" element={<EntryLayout />}>
           <Route path="/entry/login" element={<Login />} />
@@ -50,7 +55,7 @@ const AllRoutes = () => {
           path="/userinfo/main"
           element={
             <ProtectedRoute>
-              <Main />{" "}
+              <Main />
             </ProtectedRoute>
           }
         />

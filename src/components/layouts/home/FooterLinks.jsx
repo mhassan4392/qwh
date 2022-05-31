@@ -24,7 +24,7 @@ const FooterLinks = (
       title: "优惠",
       image: footer_links_2,
       tr_image: footer_links_2_transparent,
-      to: "/2",
+      to: "/promo/list",
     },
     {
       title: "我的",
