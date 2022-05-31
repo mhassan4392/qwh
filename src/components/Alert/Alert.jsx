@@ -14,7 +14,7 @@ const Alert = ({ error, type = "error", open, className, ...rest }) => {
           }`}
           {...rest}
         >
-          {error}
+          {typeof error == "string" ? error : ""}
         </motion.div>
       )}
     </AnimatePresence>

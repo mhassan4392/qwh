@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import login_icon from "@/assets/images/entry/login_icon.webp";
 import { BiUserCircle } from "react-icons/bi";
+import { ImSpinner3 } from "react-icons/im";
 import {
   AiOutlineUnlock,
   AiOutlineEye,
@@ -8,7 +9,7 @@ import {
 } from "react-icons/ai";
 import { MdOutlineCancel } from "react-icons/md";
 import { IoLanguage } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import Axios from "@/utils/axios";
@@ -16,6 +17,9 @@ import Axios from "@/utils/axios";
 import { useSelector, useDispatch } from "react-redux";
 
 import { useForm } from "react-hook-form";
+import Alert from "../../components/Alert/Alert";
+
+import userRegister from "../../store/features/auth/register";
 
 const Register = () => {
   useEffect(() => {
@@ -31,6 +35,8 @@ const Register = () => {
   const { loading, error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [codeImage, setCodeImage] = useState(false);
@@ -41,14 +47,28 @@ const Register = () => {
     formState: { errors, isValid },
     setValue,
     handleSubmit,
+    setError,
   } = useForm({ mode: "onChange" });
 
   const { username, code } = watch();
 
   const submitForm = handleSubmit((data) => {
-    console.log(errors);
-    console.log(data);
-    console.log(isValid);
+    if (data.password != data.confirmPassword) {
+      setError("confirmPassword", {
+        type: "custom",
+        message: "Passwords not matched",
+      });
+    } else {
+      console.log(data);
+      dispatch(
+        userRegister({
+          accountName: data.username,
+          pasw: data.password,
+          code: data.code,
+          navigate,
+        })
+      );
+    }
   });
 
   return (
@@ -69,6 +89,12 @@ const Register = () => {
           <h1 className="text-center">登录</h1>
 
           <form onSubmit={submitForm}>
+            {/* Error */}
+            <Alert
+              error={error?.message || ""}
+              open={error && error.type == "register"}
+            />
+
             {/* username field */}
             <div className="my-5">
               <div className="input-control">
@@ -193,8 +219,8 @@ const Register = () => {
                     : "bg-primary bg-opacity-80"
                 }`}
               >
-                {!loading && loading != "login" && "登录"}
-                {loading && loading == "login" && (
+                {loading != "register" && "登录"}
+                {loading == "register" && (
                   <ImSpinner3 className="animate-spin text-2xl" />
                 )}
               </button>

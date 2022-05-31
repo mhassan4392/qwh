@@ -8,7 +8,6 @@ const login = createAsyncThunk(
       const navigate = data.navigate;
       delete data.navigate;
       const res = await Axios({ url: "/member/signin", method: "POST", data });
-      console.log(data, res);
       if (!res.data.info) {
         throw "user not found";
       }
@@ -18,7 +17,7 @@ const login = createAsyncThunk(
       return res.data.info || null;
     } catch (error) {
       localStorage.removeItem("user");
-      return rejectWithValue(error);
+      return rejectWithValue(error.message || error);
     }
   }
 );

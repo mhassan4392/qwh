@@ -1,41 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ImSpinner11 } from "react-icons/im";
 import { BsChevronDoubleDown } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 
+import { IoReload } from "react-icons/io5";
+
 import icon_wallet_wallet from "@/assets/images/icon_wallet_wallet.webp";
-import usdt_balance from "@/assets/images/wallet/usdt_balance.webp";
+import { useDispatch, useSelector } from "react-redux";
+import getBalance from "@/store/features/wallet/getBalance";
 
 const TabOne = () => {
+  const { wallet, loading } = useSelector((state) => state.wallet);
+  const dispatch = useDispatch();
   const [more, setMore] = useState(false);
-  const amounts = [
-    { title: "球王会体育", amount: 0.0 },
-    { title: "OB体育", amount: 0.0 },
-    { title: "FB体育", amount: 0.0 },
-    { title: "eBET真人", amount: 0.0 },
-    { title: "球王会体育", amount: 0.0 },
-    { title: "OB体育", amount: 0.0 },
-    { title: "FB体育", amount: 0.0 },
-    { title: "eBET真人", amount: 0.0 },
-    { title: "球王会体育", amount: 0.0 },
-    { title: "OB体育", amount: 0.0 },
-    { title: "FB体育", amount: 0.0 },
-    { title: "eBET真人", amount: 0.0 },
-    { title: "球王会体育", amount: 0.0 },
-    { title: "OB体育", amount: 0.0 },
-    { title: "FB体育", amount: 0.0 },
-  ];
 
-  const ams = !more ? amounts.slice(0, 3) : amounts;
+  const ams = !more
+    ? wallet?.GamesWallet.slice(0, 3) || []
+    : wallet?.GamesWallet || [];
 
   const [select, setSelect] = useState("极速取款");
+
+  useEffect(() => {
+    dispatch(getBalance());
+  }, []);
   return (
     <>
       <div className="flex items-center justify-between py-3 px-4 bg-white border-b">
         <div className="flex items-center space-x-2">
           <div>钱包金额</div>
 
-          <ImSpinner11 className="text-secondary" />
+          <ImSpinner11
+            className="text-secondary"
+            onClick={() => dispatch(getBalance())}
+          />
         </div>
 
         <div className="text-secondary">一键回收</div>
@@ -47,7 +44,10 @@ const TabOne = () => {
             <img src={icon_wallet_wallet} className="w-5" alt="" />
             <div className="text-xs">中心钱包</div>
           </div>
-          <div className="text-secondary text-center">￥ 0.00</div>
+          <div className="text-secondary text-center flex">
+            {loading !== "getBalance" && <>￥ {wallet?.CenterWallet}</>}
+            {loading == "getBalance" && <IoReload className="animate-spin" />}
+          </div>
         </div>
 
         <div className="flex items-center justify-center flex-col">
@@ -55,7 +55,10 @@ const TabOne = () => {
             <img src={icon_wallet_wallet} className="w-5" alt="" />
             <div className="text-xs">锁定钱包</div>
           </div>
-          <div className="text-secondary text-center">￥ 0.00</div>
+          <div className="text-secondary text-center flex">
+            {loading !== "getBalance" && <>￥ {wallet?.LockdownWallet}</>}
+            {loading == "getBalance" && <IoReload className="animate-spin" />}
+          </div>
         </div>
       </div>
 
@@ -65,8 +68,11 @@ const TabOne = () => {
             key={i}
             className="text-[11px] flex flex-col items-center py-3 px-2"
           >
-            <div className="truncate">{amount.title}</div>
-            <div>{amount.amount}</div>
+            <div className="truncate">{amount.Name}</div>
+            <div>
+              {loading !== "getBalance" && <div>{amount.Balance}</div>}
+              {loading == "getBalance" && <IoReload className="animate-spin" />}
+            </div>
           </div>
         ))}
         <div

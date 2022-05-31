@@ -8,7 +8,9 @@ import {
 import { BsChevronLeft, BsPlusLg } from "react-icons/bs";
 import { Link, useSearchParams } from "react-router-dom";
 
-import nodata from "@/assets/images/bankcard/nodata.webp";
+import TabOne from "../../components/pages/backcard/TabOne";
+import TabTwo from "../../components/pages/backcard/TabTwo";
+import TabThree from "../../components/pages/backcard/TabThree";
 const BankCardList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const usdt = searchParams.get("usdt");
@@ -62,9 +64,9 @@ const BankCardList = () => {
             <TabsItems>
               {tabs.map((tab, i) => (
                 <TabItem key={i} tab={tab.id} defaultTab={tab.id == 0}>
-                  <div className="px-6 mt-20">
-                    <img src={nodata} className="w-full" alt="" />
-                  </div>
+                  {i == 0 && <TabOne />}
+                  {i == 1 && <TabTwo />}
+                  {i == 2 && <TabThree />}
 
                   <Link
                     to="/bankcard/add"

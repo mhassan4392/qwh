@@ -1,14 +1,33 @@
 import { useState } from "react";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { AiOutlineCheck } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Modal } from "@/components/modal";
 import account_vip from "@/assets/images/account_vip.webp";
+import { useForm } from "react-hook-form";
+import { ImSpinner3 } from "react-icons/im";
+import { useDispatch, useSelector } from "react-redux";
+import addCard from "../../store/features/bankcard/addCard";
+import Alert from "../../components/Alert/Alert";
+
 const BankCardAdd = () => {
+  const { loading, error } = useSelector((state) => state.bankcard);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid },
+  } = useForm({ mode: "onChange" });
   const [value, setValue] = useState("");
   const [modal, setModal] = useState(false);
   const [select, setSelect] = useState("中国银行");
   const selects = ["中国银行", "建设银行", "农业银行", "工商银行", "招商银行"];
+
+  const onsubmit = handleSubmit(async (data) => {
+    data.navigate = navigate;
+    await dispatch(addCard(data));
+  });
   return (
     <div className="bg-common-bg h-full flex flex-col">
       <header>
@@ -24,13 +43,24 @@ const BankCardAdd = () => {
       </header>
 
       <div className="text-xs sm:text-sm grow h-full overflow-y-auto">
+        <Alert
+          error={error?.message || ""}
+          open={error && error.type == "addCard"}
+        />
+
         <div className="bg-white px-4">
           <div className="py-2">持卡人姓名</div>
           <input
             type="text"
             className="w-full py-2 border-0 outline-none mt-2"
             placeholder="为了您的资金能够迅速到账"
+            {...register("name", { required: "Name if required" })}
           />
+          {errors.name && (
+            <div className="text-primary text-xs mt-0.5">
+              {errors.name.message}
+            </div>
+          )}
         </div>
 
         <div className="py-2 px-4">
@@ -80,15 +110,28 @@ const BankCardAdd = () => {
             type="text"
             className="w-full py-2 border-0 outline-none mt-2"
             placeholder="银行卡号"
+            {...register("bank", { required: "Bank if required" })}
           />
+          {errors.bank && (
+            <div className="text-primary text-xs mt-0.5">
+              {errors.bank.message}
+            </div>
+          )}
         </div>
 
         <div className="py-2 px-4">
           请认真校对银行卡号，卡号错误资金将无法到账
         </div>
         <div className="px-4">
-          <button disabled className="bg-primary w-full py-1.5 rounded">
-            下一步
+          <button
+            onClick={onsubmit}
+            disabled={!isValid}
+            className="bg-primary w-full py-1.5 rounded flex items-center justify-center"
+          >
+            {!loading && loading != "addCard" && "下一步"}
+            {loading && loading == "addCard" && (
+              <ImSpinner3 className="animate-spin text-xl text-white" />
+            )}
           </button>
         </div>
 
