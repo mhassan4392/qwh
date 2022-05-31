@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BsChevronLeft } from "react-icons/bs";
 
@@ -16,6 +16,8 @@ import TabTwo from "../../components/pages/promo/TabTwo";
 import TabThree from "../../components/pages/promo/TabThree";
 import TabFour from "../../components/pages/promo/TabFour";
 
+import Axios from "@/utils/axios";
+
 const PromoItem = () => {
   const tabs = [
     { id: 0, title: "EB加赠1%" },
@@ -25,6 +27,15 @@ const PromoItem = () => {
   ];
 
   const [activeTab, setActiveTab] = useState("EB加赠1%");
+
+  useEffect(() => {
+    Axios({
+      url: "/pro/get",
+      method: "POST",
+      data: { id: 1 },
+      headers: { "Content-Type": "multipart/form-data" },
+    }).then((res) => console.log(res));
+  }, []);
   return (
     <div className="bg-light-bg h-full flex flex-col">
       <header>

@@ -11,24 +11,29 @@ import Axios from "@/utils/axios";
 import ListItem from "@/components/pages/promo/ListItem";
 
 const PromoList = () => {
-  const [modal, setModal] = useState(false);
-
   const [list, setList] = useState([]);
 
   useEffect(() => {
     Axios({ url: "/pro/list", method: "POST" }).then((res) =>
       setList(res.data.info || [])
     );
-
-    Axios({
-      url: "/pro/get",
-      method: "POST",
-      data: {
-        id: 1,
-      },
-    }).then((res) => console.log(res));
   }, []);
 
+  const tabs = [
+    {
+      Id: 0,
+      Name: "tab one",
+      Dtls: [
+        {
+          Id: 1,
+          CatId: 1,
+          H5Img: "http://img.wwzznn.com/upload/202111/a04bae1c3961803c.jpeg",
+        },
+      ],
+    },
+    { Id: 0, Name: "tab two", Dtls: [] },
+    { Id: 0, Name: "tab three", Dtls: [] },
+  ];
   return (
     <div className="bg-common-bg h-full flex flex-col">
       <Tabs className="h-full flex flex-col">
@@ -37,7 +42,7 @@ const PromoList = () => {
             <h2>消息中心</h2>
           </nav>
           <TabsButtons className="flex items-center justify-between">
-            {list.map((tab, i) => (
+            {tabs.map((tab, i) => (
               <TabButton
                 className="flex flex-col items-center pb-2 basis-1/4 relative"
                 tab={i}
@@ -59,7 +64,7 @@ const PromoList = () => {
         </header>
         <div className="grow h-full overflow-hidden bg-white">
           <TabsItems className="h-full w-screen">
-            {list.map((tab, i) => (
+            {tabs.map((tab, i) => (
               <TabItem
                 tab={i}
                 key={i}
