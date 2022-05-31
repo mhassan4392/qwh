@@ -22,7 +22,7 @@ const PromoList = () => {
   const tabs = [
     {
       Id: 0,
-      Name: "tab one",
+      Name: "全部优惠",
       Dtls: [
         {
           Id: 1,
@@ -31,15 +31,15 @@ const PromoList = () => {
         },
       ],
     },
-    { Id: 0, Name: "tab two", Dtls: [] },
-    { Id: 0, Name: "tab three", Dtls: [] },
+    { Id: 0, Name: "限时活动", Dtls: [] },
+    { Id: 0, Name: "新人首存", Dtls: [] },
   ];
   return (
     <div className="bg-common-bg h-full flex flex-col">
       <Tabs className="h-full flex flex-col">
         <header className="bg-white px-4 mb-2">
           <nav className="mb-2 flex items-center justify-center relative py-3">
-            <h2>消息中心</h2>
+            <h2>优惠活动</h2>
           </nav>
           <TabsButtons className="flex items-center justify-between">
             {tabs.map((tab, i) => (
@@ -77,11 +77,11 @@ const PromoList = () => {
                   </div>
                 ))}
 
-                {!tab.Dtls.length && (
+                {/* {!tab.Dtls.length && (
                   <div className="h-full bg-common-bg flex items-center justify-center">
                     <p className="text-light text-sm">还没有新的消息</p>
                   </div>
-                )}
+                )} */}
               </TabItem>
             ))}
           </TabsItems>
