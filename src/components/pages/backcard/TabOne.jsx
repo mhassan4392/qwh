@@ -2,19 +2,27 @@ import { useEffect, useState } from "react";
 
 import nodata from "@/assets/images/bankcard/nodata.webp";
 
+import PageLoader from "@/components/loading/PageLoader";
+
 import Axios from "@/utils/axios";
 
 const TabOne = () => {
   const [cards, setCards] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    Axios({ url: "/member/cards", method: "POST" }).then((res) => {
-      setCards(res.data.data || []);
-    });
+    setLoading(true);
+    Axios({ url: "/member/cards", method: "POST" })
+      .then((res) => {
+        setCards(res.data.data || []);
+        setLoading(false);
+      })
+      .catch((err) => setLoading(false));
   }, []);
 
   return (
     <div>
+      {loading && <PageLoader />}
       {cards.length == 0 && (
         <div className="px-6 mt-20">
           <img src={nodata} className="w-full" alt="" />
