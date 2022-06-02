@@ -59,13 +59,62 @@ const AllRoutes = () => {
             </ProtectedRoute>
           }
         />
-        <Route path="/wallet/mywallet" element={<MyWallet />} />
-        <Route path="/wallet/withdraw" element={<WalletWithdraw />} />
-        <Route path="/wallet/transfer" element={<WalletTransfer />} />
-        <Route path="/wallet/mydeposit" element={<MyDeposit />} />
-        <Route path="/bankcard/add" element={<BankCardAdd />} />
-        <Route path="/bankcard/list" element={<BankCardList />} />
-        <Route path="/vip/privilege" element={<Privilege />} />
+        <Route
+          path="/wallet/mywallet"
+          element={
+            <ProtectedRoute>
+              <MyWallet />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/wallet/withdraw"
+          element={
+            <ProtectedRoute>
+              <WalletWithdraw />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/wallet/transfer"
+          element={
+            <ProtectedRoute>
+              <WalletTransfer />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/wallet/mydeposit"
+          element={
+            <ProtectedRoute>
+              <MyDeposit />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/bankcard/add"
+          element={
+            <ProtectedRoute>
+              <BankCardAdd />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/bankcard/list"
+          element={
+            <ProtectedRoute>
+              <BankCardList />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/vip/privilege"
+          element={
+            <ProtectedRoute>
+              <Privilege />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </AnimatePresence>
   );

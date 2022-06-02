@@ -3,7 +3,9 @@ import Modal from "@/components/modal/Modal";
 import { BsX } from "react-icons/bs";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 const AddModal = ({ ads, loading }) => {
+  const { showPopupAds } = useSelector((state) => state.load);
   const [nav1, setNav1] = useState();
   const [nav2, setNav2] = useState();
   const [activeSlide, setActiveSlide] = useState(0);
@@ -19,14 +21,14 @@ const AddModal = ({ ads, loading }) => {
   };
   const [modal, setModal] = useState(false);
   useEffect(() => {
-    if (!loading) {
+    if (!showPopupAds) {
       setModal(true);
     }
-  }, [loading]);
+  }, [showPopupAds]);
   return (
     <div>
       <Modal
-        open={modal}
+        open={modal && !loading}
         containerClass="bg-black bg-opacity-50"
         className="overflow-visible"
         onOutsideClick={() => setModal(false)}

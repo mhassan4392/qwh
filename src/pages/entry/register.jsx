@@ -86,7 +86,7 @@ const Register = () => {
           <span></span>
         </Link>
         <div className="grow bg-black bg-opacity-40 rounded-r-lg py-6 px-4 h-[480px] flex flex-col justify-between">
-          <h1 className="text-center">登录</h1>
+          <h1 className="text-center">注册</h1>
 
           <form onSubmit={submitForm}>
             {/* Error */}

@@ -4,8 +4,10 @@ import feature_moneytransfer from "@/assets/images/feature_moneytransfer.webp";
 import feature_moneydraw from "@/assets/images/feature_moneydraw.webp";
 import feature_vip from "@/assets/images/feature_vip.webp";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Features = () => {
+  const { user } = useSelector((state) => state.auth);
   const features = [
     { image: feature_moneysave, title: "存款", to: "/wallet/mydeposit" },
     { image: feature_moneytransfer, title: "存款", to: "/wallet/transfer" },
@@ -17,10 +19,11 @@ const Features = () => {
       <div className="flex items-center justify-between">
         <div>
           <div className="flex items-center basis-[45%]">
-            <small>aaron1990</small>
-            <img src={account_vip0} className="w-10 ml-0.5" alt="" />
+            <small>{user?.UserName || "您还未登录"}</small>
+            {user && <img src={account_vip0} className="w-10 ml-0.5" alt="" />}
           </div>
-          <div className="font-bold">¥ 0.00</div>
+          {user && <div className="font-bold">¥ 0.00</div>}
+          {!user && <p>登录/注册后查看</p>}
         </div>
 
         <div className="flex items-center basis-[55%] justify-between">
