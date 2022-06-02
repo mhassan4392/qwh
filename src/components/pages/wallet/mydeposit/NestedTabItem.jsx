@@ -4,7 +4,7 @@ const NestedTabItem = ({ details }) => {
   const { Rule } = details;
   const rule = JSON.parse(Rule);
   const arr = rule?.FixedRange ? rule?.FixedRange.split(",") : [];
-  const [value, setValue] = useState();
+  const [value, setValue] = useState("");
   return (
     <>
       <div className="text-xs px-4 bg-white py-3 my-4">

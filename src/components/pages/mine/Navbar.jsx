@@ -21,7 +21,7 @@ const MineNavbar = () => {
       </div>
 
       <NavLink
-        to={user ? "/userinfo/main" : "/entry/login"}
+        to="/userinfo/main"
         className="flex items-center justify-between"
       >
         <div className="flex space-x-2 items-center">

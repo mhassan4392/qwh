@@ -24,10 +24,7 @@ const BankCardList = () => {
     <div className="bg-common-bg h-full flex flex-col">
       <header>
         <nav className="bg-white flex items-center justify-center relative py-3">
-          <Link
-            to="/wallet/mywallet"
-            className="absolute inset-0 flex items-center mx-2"
-          >
+          <Link to={-1} className="absolute inset-0 flex items-center mx-2">
             <BsChevronLeft className="font-bold text-xl" />
           </Link>
           <h2>账户管理</h2>

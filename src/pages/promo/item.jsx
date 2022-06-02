@@ -42,7 +42,7 @@ const PromoItem = () => {
       <header>
         <nav className="bg-white flex items-center justify-center relative py-3 px-2">
           <div className="absolute inset-0 flex mx-2">
-            <Link to="/promo/list" className="inset-0 flex items-center">
+            <Link to={-1} className="inset-0 flex items-center">
               <BsChevronLeft className="font-bold text-xl" />
             </Link>
           </div>

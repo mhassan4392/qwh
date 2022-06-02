@@ -13,7 +13,7 @@ const login = createAsyncThunk(
       }
       Axios.defaults.headers.common["Authorization"] = res.data.info.Session;
       localStorage.setItem("user", JSON.stringify(res.data.info));
-      navigate("/");
+      navigate("/mine");
       return res.data.info || null;
     } catch (error) {
       localStorage.removeItem("user");

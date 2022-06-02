@@ -33,7 +33,7 @@ const AddModal = ({ ads, loading }) => {
       >
         <Modal.Header className="bg-gradient-to-r from-red-300 to-primary text-white rounded-t-lg">
           <div className="flex items-center justify-between">
-            <h2>Lorem ipsum dolor sit.</h2>
+            <h2>{ads[activeSlide]?.Title}</h2>
             <BsX className="text-2xl" onClick={() => setModal(false)} />
           </div>
         </Modal.Header>
@@ -45,7 +45,7 @@ const AddModal = ({ ads, loading }) => {
               ref={(slider1) => setNav1(slider1)}
             >
               {ads.map((slide, i) => (
-                <Link to={slide.Link || "/"}>
+                <Link key={i} to={slide.Link || "/"}>
                   <img key={i} src={slide.ImgUrl} className="w-full" alt="" />
                 </Link>
               ))}
@@ -55,7 +55,7 @@ const AddModal = ({ ads, loading }) => {
         {ads.length > 0 && (
           <Modal.Footer className="!p-0 relative shadow-none">
             <div className="absolute inset-0 -bottom-10 flex items-center justify-center space-x-2">
-              {ads.map((slide, i) => (
+              {ads.map((_slide, i) => (
                 <div
                   onClick={() => {
                     nav1.slickGoTo(i);

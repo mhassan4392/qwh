@@ -9,33 +9,25 @@ import {
 
 import Axios from "@/utils/axios";
 import ListItem from "@/components/pages/promo/ListItem";
+import PageLoader from "@/components/loading/PageLoader";
 
 const PromoList = () => {
   const [list, setList] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    Axios({ url: "/pro/list", method: "POST" }).then((res) =>
-      setList(res.data.info || [])
-    );
+    setLoading(true);
+    Axios({ url: "/pro/list", method: "POST" })
+      .then((res) => {
+        setList(res.data.info || []);
+        setLoading(false);
+      })
+      .catch((err) => setLoading(false));
   }, []);
 
-  //   const tabs = [
-  //     {
-  //       Id: 0,
-  //       Name: "全部优惠",
-  //       Dtls: [
-  //         {
-  //           Id: 1,
-  //           CatId: 1,
-  //           H5Img: "http://img.wwzznn.com/upload/202111/a04bae1c3961803c.jpeg",
-  //         },
-  //       ],
-  //     },
-  //     { Id: 0, Name: "限时活动", Dtls: [] },
-  //     { Id: 0, Name: "新人首存", Dtls: [] },
-  //   ];
   return (
     <div className="bg-common-bg h-full flex flex-col">
+      {loading && <PageLoader />}
       <Tabs className="h-full flex flex-col">
         <header className="bg-white px-4 mb-2">
           <nav className="mb-2 flex items-center justify-center relative py-3">

@@ -30,7 +30,6 @@ const MyDeposit = () => {
     setLoading(true);
     Axios({ url: "/pay/list", method: "POST" })
       .then((res) => {
-        console.log(res);
         setTabs(res.data.info);
         setLoading(false);
       })
@@ -41,7 +40,7 @@ const MyDeposit = () => {
       {loading && <PageLoader />}
       <header>
         <nav className="bg-white flex items-center justify-between relative py-3 px-2">
-          <Link to="/wallet/mywallet" className="inset-0 flex items-center">
+          <Link to={-1} className="inset-0 flex items-center">
             <BsChevronLeft className="font-bold text-xl" />
           </Link>
           <h2>存款</h2>

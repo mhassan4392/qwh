@@ -18,7 +18,7 @@ const PrivilegeHeader = () => {
       >
         <div className="flex items-center justify-center relative py-2">
           <div>VIP特权</div>
-          <Link to="/" className="absolute inset-0 flex items-center">
+          <Link to={-1} className="absolute inset-0 flex items-center">
             <BsChevronLeft />
           </Link>
         </div>

@@ -20,7 +20,7 @@ const WalletWithdraw = () => {
     <div className="bg-common-bg h-full flex flex-col">
       <header>
         <nav className="bg-white flex items-center justify-between relative py-3 px-2">
-          <Link to="/wallet/mywallet" className="inset-0 flex items-center">
+          <Link to={-1} className="inset-0 flex items-center">
             <BsChevronLeft className="font-bold text-xl" />
           </Link>
           <h2>取款</h2>

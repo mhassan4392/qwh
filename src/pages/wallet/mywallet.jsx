@@ -11,7 +11,7 @@ const MyWallet = () => {
       <div className="relative">
         <img src={wallet_page_bg} className="w-full h-[200px]" alt="" />
         <div className="fixed top-0 left-0 right-0 flex items-center justify-between px-4 py-4 z-50">
-          <Link to="/mine">
+          <Link to={-1}>
             <BsChevronLeft className="text-xl text-white" />
           </Link>
           <div>我的钱包</div>
