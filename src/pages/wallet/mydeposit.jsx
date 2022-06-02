@@ -16,6 +16,7 @@ import { Link } from "react-router-dom";
 import TabOne from "../../components/pages/wallet/mydeposit/TabOne";
 import TabTwo from "../../components/pages/wallet/mydeposit/TabTwo";
 import MyDepositTabItem from "../../components/pages/wallet/mydeposit/TabItem";
+import PageLoader from "../../components/loading/PageLoader";
 const MyDeposit = () => {
   // const tabs = [
   //   { title: "存入中心钱包", id: 0 },
@@ -23,15 +24,21 @@ const MyDeposit = () => {
   // ];
 
   const [tabs, setTabs] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    Axios({ url: "/pay/list", method: "POST" }).then((res) => {
-      console.log(res);
-      setTabs(res.data.info);
-    });
+    setLoading(true);
+    Axios({ url: "/pay/list", method: "POST" })
+      .then((res) => {
+        console.log(res);
+        setTabs(res.data.info);
+        setLoading(false);
+      })
+      .catch((err) => setLoading(false));
   }, []);
   return (
     <div className="bg-common-bg h-full flex flex-col">
+      {loading && <PageLoader />}
       <header>
         <nav className="bg-white flex items-center justify-between relative py-3 px-2">
           <Link to="/wallet/mywallet" className="inset-0 flex items-center">

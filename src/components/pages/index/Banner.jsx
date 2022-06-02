@@ -33,6 +33,7 @@ const Banner = ({ messages }) => {
             >
               {messages.map((message, i) => (
                 <span
+                  key={i}
                   className="flex items-center space-x-5"
                   onClick={() => {
                     setModalMessage(message);

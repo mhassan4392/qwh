@@ -3,7 +3,7 @@ import Modal from "@/components/modal/Modal";
 import { BsX } from "react-icons/bs";
 import Slider from "react-slick";
 import { Link } from "react-router-dom";
-const StartModal = ({ ads }) => {
+const AddModal = ({ ads, loading }) => {
   const [nav1, setNav1] = useState();
   const [nav2, setNav2] = useState();
   const [activeSlide, setActiveSlide] = useState(0);
@@ -19,8 +19,10 @@ const StartModal = ({ ads }) => {
   };
   const [modal, setModal] = useState(false);
   useEffect(() => {
-    setTimeout(() => setModal(true), 2000);
-  }, []);
+    if (!loading) {
+      setModal(true);
+    }
+  }, [loading]);
   return (
     <div>
       <Modal
@@ -73,4 +75,4 @@ const StartModal = ({ ads }) => {
   );
 };
 
-export default StartModal;
+export default AddModal;
