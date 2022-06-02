@@ -3,13 +3,14 @@ import feature_moneysave from "@/assets/images/feature_moneysave.webp";
 import feature_moneytransfer from "@/assets/images/feature_moneytransfer.webp";
 import feature_moneydraw from "@/assets/images/feature_moneydraw.webp";
 import feature_vip from "@/assets/images/feature_vip.webp";
+import { Link } from "react-router-dom";
 
 const Features = () => {
   const features = [
-    { image: feature_moneysave, title: "存款" },
-    { image: feature_moneytransfer, title: "存款" },
-    { image: feature_moneydraw, title: "存款" },
-    { image: feature_vip, title: "VIP" },
+    { image: feature_moneysave, title: "存款", to: "/wallet/mydeposit" },
+    { image: feature_moneytransfer, title: "存款", to: "/wallet/transfer" },
+    { image: feature_moneydraw, title: "存款", to: "/wallet/withdraw" },
+    { image: feature_vip, title: "VIP", to: "/vip/privilege" },
   ];
   return (
     <div className="px-4 py-3 rounded-b-2xl bg-white mb-5 shadow">
@@ -24,10 +25,10 @@ const Features = () => {
 
         <div className="flex items-center basis-[55%] justify-between">
           {features.map((feature, i) => (
-            <div key={i}>
+            <Link to={feature.to} key={i}>
               <img src={feature.image} className="w-8" alt="" />
               <div className="text-center text-sm">{feature.title}</div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>
