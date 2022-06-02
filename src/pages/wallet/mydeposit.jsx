@@ -1,3 +1,7 @@
+import { useState, useEffect } from "react";
+
+import Axios from "@/utils/axios";
+
 import {
   Tabs,
   TabsButtons,
@@ -11,11 +15,21 @@ import { Link } from "react-router-dom";
 
 import TabOne from "../../components/pages/wallet/mydeposit/TabOne";
 import TabTwo from "../../components/pages/wallet/mydeposit/TabTwo";
+import MyDepositTabItem from "../../components/pages/wallet/mydeposit/TabItem";
 const MyDeposit = () => {
-  const tabs = [
-    { title: "存入中心钱包", id: 0 },
-    { title: "存入虚拟币钱包", id: 1 },
-  ];
+  // const tabs = [
+  //   { title: "存入中心钱包", id: 0 },
+  //   { title: "存入虚拟币钱包", id: 1 },
+  // ];
+
+  const [tabs, setTabs] = useState([]);
+
+  useEffect(() => {
+    Axios({ url: "/pay/list", method: "POST" }).then((res) => {
+      console.log(res);
+      setTabs(res.data.info);
+    });
+  }, []);
   return (
     <div className="bg-common-bg h-full flex flex-col">
       <header>
@@ -39,11 +53,11 @@ const MyDeposit = () => {
                 className="flex flex-col items-center py-1.5 text-xs rounded-b-lg text-light basis-2/3 relative"
                 activeClass="bg-white text-black rounded-t-lg"
                 key={i}
-                tab={tab.id}
+                tab={i}
               >
                 {({ isActive }) => (
                   <>
-                    <span>{tab.title}</span>
+                    <span>{tab.Name}</span>
                     {isActive && (
                       <span className="h-0.5 w-8 bg-secondary my-1 absolute -bottom-0.5"></span>
                     )}
@@ -55,9 +69,10 @@ const MyDeposit = () => {
 
           <TabsItems>
             {tabs.map((tab, i) => (
-              <TabItem tab={tab.id} key={i} defaultTab={tab.id == 0}>
-                {tab.id == 0 && <TabOne />}
-                {tab.id == 1 && <TabTwo />}
+              <TabItem tab={i} key={i} defaultTab={i == 0}>
+                <MyDepositTabItem tabs={tab.Merchants} />
+                {/* {i == 0 && <TabOne />}
+                {i == 1 && <TabTwo />} */}
               </TabItem>
             ))}
           </TabsItems>
