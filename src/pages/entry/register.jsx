@@ -64,7 +64,7 @@ const Register = () => {
         userRegister({
           accountName: data.username,
           pasw: data.password,
-          code: data.code,
+          validCode: data.code,
           navigate,
         })
       );

@@ -20,11 +20,15 @@ import { setError } from "@/store/features/auth/authSlice";
 import { useForm } from "react-hook-form";
 import Alert from "../../components/Alert/Alert";
 
+import Axios from "@/utils/axios";
+
 const Login = () => {
   const { loading, error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
+
+  const [codeImage, setCodeImage] = useState(false);
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -54,6 +58,15 @@ const Login = () => {
   }, [time]);
 
   useEffect(() => {
+    Axios({
+      url: "/SignUp/validCode",
+      method: "POST",
+      responseType: "blob",
+    }).then((res) => {
+      const url = URL.createObjectURL(res.data);
+      setCodeImage(url);
+    });
+
     dispatch(setError(null));
     return () => clearInterval(interval.current);
   }, []);
@@ -66,16 +79,39 @@ const Login = () => {
     formState: { errors, isValid },
   } = useForm({ mode: "onChange" });
 
-  const { name } = watch();
+  const { name, validCode } = watch();
 
   const onSubmit = handleSubmit(async (data) => {
     if (!getCode) {
+      dispatch(setError(null));
       setGetCode(true);
     } else {
+      console.log(data);
       data.navigate = navigate;
       await dispatch(login(data));
     }
   });
+
+  useEffect(() => {
+    if (!loading && error?.type == "login") {
+      Axios({
+        url: "/SignUp/validCode",
+        method: "POST",
+        responseType: "blob",
+      }).then((res) => {
+        const url = URL.createObjectURL(res.data);
+        setCodeImage(url);
+      });
+    }
+
+    console.log("hello");
+
+    if (error && error.type == "login") {
+      setValue("validCode", "");
+      setValue("password", "");
+      setGetCode(false);
+    }
+  }, [error]);
 
   return (
     <>
@@ -102,7 +138,8 @@ const Login = () => {
                     <div className="text-center my-5 text-xs">
                       因本次登录不是常用IP，故需要安全验证
                     </div>
-                    <div className="my-5">
+
+                    {/* <div className="my-5">
                       <div ref={codeRef} className="input-control">
                         <IoLanguage className="left-element" />
                         <input
@@ -131,6 +168,40 @@ const Login = () => {
                       {errors.code && (
                         <div className="error-element">
                           {errors.code.message}
+                        </div>
+                      )}
+                    </div> */}
+
+                    <div>
+                      <div className="input-control">
+                        <IoLanguage className="left-element" />
+                        <input
+                          type="text"
+                          placeholder="验证码"
+                          className="!pr-[125px]"
+                          {...register("validCode", {
+                            required: "Code is required",
+                          })}
+                        />
+                        <span className="right-element">
+                          {codeImage && (
+                            <img
+                              src={codeImage}
+                              className="w-20 h-[38px] mr-1"
+                              alt=""
+                            />
+                          )}
+                        </span>
+                        {validCode && (
+                          <MdOutlineCancel
+                            onClick={() => setValue("code", "")}
+                            className="right-element !mr-[100px]"
+                          />
+                        )}
+                      </div>
+                      {errors.validCode && (
+                        <div className="error-element">
+                          {errors.validCode.message}
                         </div>
                       )}
                     </div>

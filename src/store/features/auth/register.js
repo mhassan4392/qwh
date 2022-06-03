@@ -8,17 +8,17 @@ const register = createAsyncThunk(
       const navigate = data.navigate;
       delete data.navigate;
       const res = await Axios({
-        url: "/member/SignUp/do",
+        url: "/SignUp/do",
         method: "POST",
         data,
       });
+      console.log(res);
       if (!res.data.info) {
-        throw "something went wrong";
+        throw res.data.msg;
       }
       navigate("/auth/login");
       return res.data.info || null;
     } catch (error) {
-      console.log(error);
       return rejectWithValue(error.message || error);
     }
   }

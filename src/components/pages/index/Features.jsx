@@ -10,8 +10,8 @@ const Features = () => {
   const { user } = useSelector((state) => state.auth);
   const features = [
     { image: feature_moneysave, title: "存款", to: "/wallet/mydeposit" },
-    { image: feature_moneytransfer, title: "存款", to: "/wallet/transfer" },
-    { image: feature_moneydraw, title: "存款", to: "/wallet/withdraw" },
+    { image: feature_moneytransfer, title: "转账", to: "/wallet/transfer" },
+    { image: feature_moneydraw, title: "取款", to: "/wallet/withdraw" },
     { image: feature_vip, title: "VIP", to: "/vip/privilege" },
   ];
   return (
@@ -19,11 +19,12 @@ const Features = () => {
       <div className="flex items-center justify-between">
         <div>
           <div className="flex items-center basis-[45%]">
-            <small>{user?.UserName || "您还未登录"}</small>
+            {user?.UserName && <div className="text-sm">{user?.UserName}</div>}
+            {!user?.UserName && <div className="font-semibold">您还未登录</div>}
             {user && <img src={account_vip0} className="w-10 ml-0.5" alt="" />}
           </div>
           {user && <div className="font-bold">¥ 0.00</div>}
-          {!user && <p>登录/注册后查看</p>}
+          {!user && <p className="text-sm">登录/注册后查看</p>}
         </div>
 
         <div className="flex items-center basis-[55%] justify-between">

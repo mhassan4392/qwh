@@ -9,13 +9,14 @@ const login = createAsyncThunk(
       delete data.navigate;
       const res = await Axios({ url: "/member/signin", method: "POST", data });
       if (!res.data.info) {
-        throw "user not found";
+        throw res.data.msg;
       }
       Axios.defaults.headers.common["Authorization"] = res.data.info.Session;
       localStorage.setItem("user", JSON.stringify(res.data.info));
       navigate("/");
       return res.data.info || null;
     } catch (error) {
+      console.log(error);
       localStorage.removeItem("user");
       return rejectWithValue(error.message || error);
     }
