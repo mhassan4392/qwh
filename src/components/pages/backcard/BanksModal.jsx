@@ -3,7 +3,7 @@ import { useState } from "react";
 import account_vip from "@/assets/images/account_vip.webp";
 import { AiOutlineCheck } from "react-icons/ai";
 
-const BanksModal = ({ open, onClose, defaultValue = "" }) => {
+const BanksModal = ({ open, onClose, defaultValue = "", cards, onClick }) => {
   const banks = ["中国银行", "建设银行", "农业银行", "工商银行", "招商银行"];
   const [select, setSelect] = useState(defaultValue);
   return (
@@ -22,24 +22,18 @@ const BanksModal = ({ open, onClose, defaultValue = "" }) => {
       </Modal.Header>
       <Modal.Body className="!p-0">
         <div>
-          {banks.map((selected, i) => (
+          {cards.map((card, i) => (
             <div
-              key={i}
-              className="flex items-center justify-between border-b py-2 px-4"
               onClick={() => {
-                setSelect(selected);
+                onClick(card);
                 onClose();
               }}
+              key={i}
+              className="flex items-center my-3 bg-white rounded p-2 text-xs space-x-2 justify-between"
             >
-              <div className="flex items-center space-x-3">
-                <img src={account_vip} className="w-8" alt="" />
-                <div>{selected}</div>
-              </div>
-              <div>
-                {select == selected && (
-                  <AiOutlineCheck className="text-secondary" />
-                )}
-              </div>
+              <div>{card.AccountName}</div>
+              <div>{card.AccountNo}</div>
+              <div>{card.BankName}</div>
             </div>
           ))}
         </div>

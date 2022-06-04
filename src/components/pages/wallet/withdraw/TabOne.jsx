@@ -15,6 +15,7 @@ import { Link } from "react-router-dom";
 import BanksModal from "../../backcard/BanksModal";
 
 const TabOne = () => {
+  const [card, setCard] = useState(null);
   const { wallet, loading } = useSelector((state) => state.wallet);
   const { cards, loading: cardsLoading } = useSelector(
     (state) => state.bankcard
@@ -120,7 +121,7 @@ const TabOne = () => {
         </div>
       </div> */}
 
-      <div className="px-4">
+      {/* <div className="px-4">
         {cards.map((card, i) => (
           <div
             onClick={() => setBankModal(true)}
@@ -132,7 +133,30 @@ const TabOne = () => {
             <div>{card.BankName}</div>
           </div>
         ))}
-      </div>
+      </div> */}
+
+      {cards.length > 0 && !card && (
+        <div className="px-4 my-2" onClick={() => setBankModal(true)}>
+          <div className="bg-white text-center p-2 rounded">
+            Please select a Card
+          </div>
+        </div>
+      )}
+
+      {card && (
+        <div>
+          <div className="px-4">
+            <div
+              className="flex items-center my-3 bg-white rounded p-2 text-xs space-x-2 justify-between"
+              onClick={() => setBankModal(true)}
+            >
+              <div>{card.AccountName}</div>
+              <div>{card.AccountNo}</div>
+              <div>{card.BankName}</div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {cards.length == 0 && (
         <div className="flex items-center justify-between text-xs px-4 bg-white py-4">
@@ -159,7 +183,12 @@ const TabOne = () => {
         取款遇到问题？联系<span className="text-secondary">人工客服</span>解决
       </div>
 
-      <BanksModal open={bankModal} onClose={() => setBankModal(false)} />
+      <BanksModal
+        open={bankModal}
+        onClose={() => setBankModal(false)}
+        cards={cards}
+        onClick={(c) => setCard(c)}
+      />
     </>
   );
 };
