@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { ImSpinner11 } from "react-icons/im";
+import { ImSpinner11, ImSpinner3 } from "react-icons/im";
 import { BsChevronDoubleDown } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 
@@ -13,6 +13,8 @@ import PageLoader from "../../../loading/PageLoader";
 
 import { Link } from "react-router-dom";
 import BanksModal from "../../backcard/BanksModal";
+import { useForm } from "react-hook-form";
+import addWithdrawal from "../../../../store/features/wallet/addWithdrawal";
 
 const TabOne = () => {
   const [card, setCard] = useState(null);
@@ -35,6 +37,25 @@ const TabOne = () => {
     dispatch(getCards());
     dispatch(getBalance());
   }, []);
+
+  const {
+    register,
+    formState: { errors, isValid },
+    handleSubmit,
+    setValue,
+  } = useForm({ mode: "onChange" });
+
+  const onSubmit = handleSubmit(async (data) => {
+    dispatch(
+      addWithdrawal({
+        Money: Number(data.money),
+        BankId: card.Id,
+        Spswd: "",
+        setValue,
+      })
+    );
+  });
+
   return (
     <>
       {cardsLoading == "getCards" && <PageLoader />}
@@ -144,18 +165,51 @@ const TabOne = () => {
       )}
 
       {card && (
-        <div>
-          <div className="px-4">
-            <div
-              className="flex items-center my-3 bg-white rounded p-2 text-xs space-x-2 justify-between"
-              onClick={() => setBankModal(true)}
-            >
-              <div>{card.AccountName}</div>
-              <div>{card.AccountNo}</div>
-              <div>{card.BankName}</div>
+        <form onSubmit={onSubmit}>
+          <div>
+            <div className="px-4">
+              <div
+                className="flex items-center my-3 bg-white rounded p-2 text-xs space-x-2 justify-between"
+                onClick={() => setBankModal(true)}
+              >
+                <div>{card.AccountName}</div>
+                <div>{card.AccountNo}</div>
+                <div>{card.BankName}</div>
+              </div>
             </div>
           </div>
-        </div>
+
+          <div className="px-4">
+            <div className="bg-white p-2">
+              <input
+                type="number"
+                className="bg-transparent border-0 outline-none py-1 text-xl font-bold placeholder:text-sm placeholder:font-light focus:ring-0"
+                {...register("money", {
+                  required: "Money is required",
+                })}
+                placeholder="placeholder"
+              />
+              {errors.money && (
+                <div className="error-element">{errors.money.message}</div>
+              )}
+            </div>
+          </div>
+
+          <div className="mx-4 my-4">
+            <button
+              type="submit"
+              disabled={!isValid}
+              className={`w-full bg-primary py-2 text-white flex items-center justify-center ${
+                !isValid ? "bg-opacity-50" : ""
+              }`}
+            >
+              {loading != "addWithdrawal" && "申请提现"}
+              {loading == "addWithdrawal" && (
+                <ImSpinner3 className="animate-spin text-xl text-white" />
+              )}
+            </button>
+          </div>
+        </form>
       )}
 
       {cards.length == 0 && (

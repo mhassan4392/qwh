@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import getBalance from "./getBalance";
 import addTrans from "./addTrans";
 import addPay from "./addPay";
+import addWithdrawal from "./addWithdrawal";
 
 const initialState = {
   wallet: null,
@@ -63,6 +64,22 @@ const walletSlice = createSlice({
         state.loading = false;
         state.error = {
           type: "addPay",
+          message: action.payload,
+        };
+      })
+      // add withdrawal
+      .addCase(addWithdrawal.pending, (state) => {
+        state.loading = "addWithdrawal";
+        state.error = null;
+      })
+      .addCase(addWithdrawal.fulfilled, (state) => {
+        state.error = null;
+        state.loading = false;
+      })
+      .addCase(addWithdrawal.rejected, (state, action) => {
+        state.loading = false;
+        state.error = {
+          type: "addWithdrawal",
           message: action.payload,
         };
       });
