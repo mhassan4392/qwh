@@ -1,9 +1,7 @@
 import { Modal } from "@/components/modal";
 import { useState } from "react";
-import account_vip from "@/assets/images/account_vip.webp";
-import { AiOutlineCheck } from "react-icons/ai";
 
-const BanksModal = ({ open, onClose, defaultValue = "", cards, onClick }) => {
+const CardsModal = ({ open, onClose, defaultValue = "", cards, onClick }) => {
   const banks = ["中国银行", "建设银行", "农业银行", "工商银行", "招商银行"];
   const [select, setSelect] = useState(defaultValue);
   return (
@@ -42,4 +40,4 @@ const BanksModal = ({ open, onClose, defaultValue = "", cards, onClick }) => {
   );
 };
 
-export default BanksModal;
+export default CardsModal;

@@ -12,7 +12,7 @@ import getCards from "../../../../store/features/bankcard/getCards";
 import PageLoader from "../../../loading/PageLoader";
 
 import { Link } from "react-router-dom";
-import BanksModal from "../../backcard/BanksModal";
+import CardsModal from "../../backcard/CardsModal";
 import { useForm } from "react-hook-form";
 import addWithdrawal from "../../../../store/features/wallet/addWithdrawal";
 
@@ -31,7 +31,7 @@ const TabOne = () => {
 
   const [select, setSelect] = useState("极速取款");
 
-  const [bankModal, setBankModal] = useState(false);
+  const [cardsModal, setCardsModal] = useState(false);
 
   useEffect(() => {
     dispatch(getCards());
@@ -145,7 +145,7 @@ const TabOne = () => {
       {/* <div className="px-4">
         {cards.map((card, i) => (
           <div
-            onClick={() => setBankModal(true)}
+            onClick={() => setCardsModal(true)}
             key={i}
             className="flex items-center my-3 bg-white rounded p-2 text-xs space-x-2 justify-between"
           >
@@ -157,7 +157,7 @@ const TabOne = () => {
       </div> */}
 
       {cards.length > 0 && !card && (
-        <div className="px-4 my-2" onClick={() => setBankModal(true)}>
+        <div className="px-4 my-2" onClick={() => setCardsModal(true)}>
           <div className="bg-white text-center p-2 rounded">
             Please select a Card
           </div>
@@ -170,7 +170,7 @@ const TabOne = () => {
             <div className="px-4">
               <div
                 className="flex items-center my-3 bg-white rounded p-2 text-xs space-x-2 justify-between"
-                onClick={() => setBankModal(true)}
+                onClick={() => setCardsModal(true)}
               >
                 <div>{card.AccountName}</div>
                 <div>{card.AccountNo}</div>
@@ -237,9 +237,9 @@ const TabOne = () => {
         取款遇到问题？联系<span className="text-secondary">人工客服</span>解决
       </div>
 
-      <BanksModal
-        open={bankModal}
-        onClose={() => setBankModal(false)}
+      <CardsModal
+        open={cardsModal}
+        onClose={() => setCardsModal(false)}
         cards={cards}
         onClick={(c) => setCard(c)}
       />
