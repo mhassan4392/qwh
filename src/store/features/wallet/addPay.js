@@ -8,7 +8,7 @@ const addPay = createAsyncThunk(
     const setValue = data.setValue;
     delete data.setValue;
     try {
-      const res = await Axios({ url: "/Game/trans", method: "POST", data });
+      const res = await Axios({ url: "/pay/do", method: "POST", data });
       setValue("money", "");
       toast("Payment is successful");
       return res.data.info;

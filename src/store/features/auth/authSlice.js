@@ -4,7 +4,7 @@ import authenticate from "./authenticate";
 import register from "./register";
 
 const initialState = {
-  user: null,
+  user: JSON.parse(localStorage.getItem("user")) || null,
   loading: false,
   error: null,
   code: null,

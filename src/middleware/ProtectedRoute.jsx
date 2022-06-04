@@ -8,7 +8,7 @@ const ProtectedRoute = ({ children }) => {
 
   useEffect(() => {
     if (!user && !loading) {
-      // navigate("/entry/login");
+      navigate("/entry/login");
     }
   }, [user]);
 
