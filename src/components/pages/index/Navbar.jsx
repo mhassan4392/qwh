@@ -3,9 +3,13 @@ import logo from "@/assets/images/logo.webp";
 import message_logo from "@/assets/images/message_logo.svg";
 import navbar_download_logo from "@/assets/images/navbar_download_logo.webp";
 import { BsX } from "react-icons/bs";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [display, setDisplay] = useState(true);
+
+  const { config } = useSelector((state) => state.config);
   return (
     <div>
       {display && (
@@ -18,10 +22,14 @@ const Navbar = () => {
               />
             </div>
             <div>
-              <img src={navbar_download_logo} className="w-10 mr-1" alt="" />
+              <img
+                src={config?.CsConfig?.H5Logo}
+                className="w-10 mr-1"
+                alt=""
+              />
             </div>
             <div className="text-xs">
-              <div>球王会体育APP</div>
+              <div>{config?.Name}</div>
               <div className="text-[9px] text-light">
                 真人娱乐，体育投注，电子游艺等尽在一手掌握
               </div>
@@ -36,11 +44,11 @@ const Navbar = () => {
       )}
       <div className="flex items-center justify-between py-2 px-4">
         <div>
-          <img src={logo} className="w-32" alt="" />
+          <img src={config?.CsConfig?.H5Logo} className="w-20" alt="" />
         </div>
-        <div>
+        <a href={config?.CsConfig?.ServiceLink || "/"}>
           <img src={message_logo} alt="" />
-        </div>
+        </a>
       </div>
     </div>
   );

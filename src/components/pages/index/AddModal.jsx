@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 const AddModal = ({ ads, loading }) => {
-  const { showPopupAds } = useSelector((state) => state.load);
+  const { showPopupAds } = useSelector((state) => state.config);
   const [nav1, setNav1] = useState();
   const [nav2, setNav2] = useState();
   const [activeSlide, setActiveSlide] = useState(0);

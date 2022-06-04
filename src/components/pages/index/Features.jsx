@@ -24,7 +24,12 @@ const Features = () => {
             {user && <img src={account_vip0} className="w-10 ml-0.5" alt="" />}
           </div>
           {user && <div className="font-bold">¥ 0.00</div>}
-          {!user && <p className="text-sm">登录/注册后查看</p>}
+          {!user && (
+            <p className="text-sm">
+              <Link to="/entry/login">登录</Link>/
+              <Link to="/entry/register">注册</Link> 后查看
+            </p>
+          )}
         </div>
 
         <div className="flex items-center basis-[55%] justify-between">

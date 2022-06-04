@@ -11,7 +11,7 @@ import { ImSpinner3 } from "react-icons/im";
 import { IoLanguage } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import CodeModal from "./codeModal";
+import CodeModal from "../../components/pages/entry/codeModal";
 
 import { useSelector, useDispatch } from "react-redux";
 import login from "@/store/features/auth/login";
@@ -103,8 +103,6 @@ const Login = () => {
         setCodeImage(url);
       });
     }
-
-    console.log("hello");
 
     if (error && error.type == "login") {
       setValue("validCode", "");

@@ -7,10 +7,12 @@ import Slider from "../components/pages/index/Slider";
 import Navbar from "../components/pages/index/Navbar";
 import Axios from "../utils/axios";
 import PageLoader from "../components/loading/PageLoader";
+import { useSelector } from "react-redux";
 
 const Index = () => {
   const [loading, setLoading] = useState(true);
   const [data, setData] = useState(null);
+  const { loading: configLoading } = useSelector((state) => state.config);
   useEffect(() => {
     Axios({ url: "/page/load", method: "POST" })
       .then((res) => {
@@ -24,7 +26,7 @@ const Index = () => {
       <header className="bg-white">
         <Navbar />
       </header>
-      {loading && <PageLoader />}
+      {(loading || configLoading) && <PageLoader />}
       <AddModal loading={loading} ads={data?.PopUpAds || []} />
       <Slider slides={data?.Banner || []} />
       <Banner messages={data?.Message || []} />
