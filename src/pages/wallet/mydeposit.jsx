@@ -39,15 +39,17 @@ const MyDeposit = () => {
     <div className="bg-common-bg h-full flex flex-col">
       {loading && <PageLoader />}
       <header>
-        <nav className="bg-white flex items-center justify-between relative py-3 px-2">
-          <Link to={-1} className="inset-0 flex items-center">
-            <BsChevronLeft className="font-bold text-xl" />
-          </Link>
+        <nav className="bg-white flex items-center justify-center relative py-3 px-2">
+          <div className="absolute inset-0 flex items-center px-2">
+            <Link to={-1} className="inset-0 flex items-center">
+              <BsChevronLeft className="font-bold text-xl" />
+            </Link>
+          </div>
           <h2>存款</h2>
-          <div className="flex items-center space-x-1">
+          {/* <div className="flex items-center space-x-1">
             <div>教程</div>
             <BiHelpCircle />
-          </div>
+          </div> */}
         </nav>
       </header>
 

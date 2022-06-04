@@ -17,8 +17,8 @@ const BankCardList = () => {
   const ebpay = searchParams.get("ebpay");
   const tabs = [
     { title: "银行卡", id: 0 },
-    { title: "虚拟币", id: 1 },
-    { title: "EBpay地址", id: 2 },
+    // { title: "虚拟币", id: 1 },
+    // { title: "EBpay地址", id: 2 },
   ];
   return (
     <div className="bg-common-bg h-full flex flex-col">

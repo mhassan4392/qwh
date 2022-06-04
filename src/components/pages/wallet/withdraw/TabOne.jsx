@@ -88,7 +88,7 @@ const TabOne = () => {
         </div>
       </div>
 
-      <div className="flex items-center my-3 py-4 px-4 bg-white space-x-3 text-xs">
+      {/* <div className="flex items-center my-3 py-4 px-4 bg-white space-x-3 text-xs">
         <div>取款方式</div>
         <div
           onClick={() => setSelect("极速取款")}
@@ -106,7 +106,7 @@ const TabOne = () => {
         >
           EBpay提币
         </div>
-      </div>
+      </div> */}
 
       <div className="flex items-center justify-between text-xs px-4 bg-white py-4">
         <div>{select == "极速取款" ? "到账银行卡" : "EBpay到账地址"}</div>
@@ -118,11 +118,11 @@ const TabOne = () => {
         </div>
       </div>
 
-      <div className="px-4 py-3 text-xs">
+      {/* <div className="px-4 py-3 text-xs">
         {select == "极速取款"
           ? "请先绑定一个EBpay收款地址，用于收款"
           : "请先绑定一张银行卡，用于收款"}
-      </div>
+      </div> */}
 
       <div className="text-center px-4 text-xs my-5">
         取款遇到问题？联系<span className="text-secondary">人工客服</span>解决

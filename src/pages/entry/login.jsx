@@ -296,7 +296,9 @@ const Login = () => {
                   </button>
                 </div>
 
-                <div className="my-5 text-center text-xs">先去逛逛</div>
+                <Link to="/" className="my-5 text-center text-xs block">
+                  先去逛逛
+                </Link>
               </form>
             </div>
           </div>

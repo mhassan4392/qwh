@@ -2,19 +2,19 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { BsChevronLeft } from "react-icons/bs";
 
-import item_jpg from "@/assets/images/promo/item.jpg";
+// import item_jpg from "@/assets/images/promo/item.jpg";
 
-import {
-  Tabs,
-  TabsButtons,
-  TabsItems,
-  TabButton,
-  TabItem,
-} from "@/components/tabs";
-import TabOne from "../../components/pages/promo/TabOne";
-import TabTwo from "../../components/pages/promo/TabTwo";
-import TabThree from "../../components/pages/promo/TabThree";
-import TabFour from "../../components/pages/promo/TabFour";
+// import {
+//   Tabs,
+//   TabsButtons,
+//   TabsItems,
+//   TabButton,
+//   TabItem,
+// } from "@/components/tabs";
+// import TabOne from "../../components/pages/promo/TabOne";
+// import TabTwo from "../../components/pages/promo/TabTwo";
+// import TabThree from "../../components/pages/promo/TabThree";
+// import TabFour from "../../components/pages/promo/TabFour";
 
 import Axios from "@/utils/axios";
 
@@ -56,13 +56,14 @@ const PromoItem = () => {
             <div className="text-center space-y-2">
               <img src={item?.H5Cover} alt="" />
               <div className="font-semibold">{item?.Title}</div>
-              <div className="text-xs">{item?.StartTime}</div>
+              <div className="text-xs">Start: &nbsp; {item?.StartTime}</div>
+              <div className="text-xs">End: &nbsp; {item?.EndTime}</div>
               <div className="text-sm">{item?.Description}</div>
             </div>
           )}
         </div>
 
-        <Tabs className="">
+        {/* <Tabs className="">
           <header className="py-4">
             <TabsButtons className="grid grid-cols-2 gap-5 items-center justify-between w-2/3 mx-auto">
               {tabs.map((tab, i) => (
@@ -97,7 +98,7 @@ const PromoItem = () => {
               </TabItem>
             </TabsItems>
           </div>
-        </Tabs>
+        </Tabs> */}
       </div>
     </div>
   );

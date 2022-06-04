@@ -14,29 +14,31 @@ import TabTwo from "../../components/pages/wallet/transfer/TabTwo";
 const WalletTransfer = () => {
   const tabs = [
     { title: "转账", id: 0 },
-    { title: "兑换", id: 1 },
+    // { title: "兑换", id: 1 },
   ];
   return (
     <div className="bg-common-bg h-full flex flex-col">
       <header>
-        <nav className="bg-white flex items-center justify-between relative py-3 px-2">
-          <Link to={-1} className="inset-0 flex items-center">
-            <BsChevronLeft className="font-bold text-xl" />
-          </Link>
+        <nav className="bg-white flex items-center justify-center relative py-3 px-2">
+          <div className="absolute inset-0 flex items-center px-2">
+            <Link to={-1} className="inset-0 flex items-center">
+              <BsChevronLeft className="font-bold text-xl" />
+            </Link>
+          </div>
           <h2>转账</h2>
-          <div className="flex items-center space-x-1">
+          {/* <div className="flex items-center space-x-1">
             <div>教程</div>
             <BiHelpCircle />
-          </div>
+          </div> */}
         </nav>
       </header>
 
       <div className="grow h-full overflow-y-auto">
         <Tabs defaultTab={0}>
-          <TabsButtons className="flex items-center text-xs pt-3 justify-center bg-[#f9f9f9] cursor-pointer overflow-hidden">
+          <TabsButtons className="flex items-center text-xs pt-3 justify-start bg-[#f9f9f9] cursor-pointer overflow-hidden">
             {tabs.map((tab, i) => (
               <TabButton
-                className="flex flex-col items-center py-1.5 text-xs rounded-b-lg text-light basis-2/3 relative"
+                className="flex flex-col items-center py-1.5 text-xs rounded-b-lg text-light basis-1/2 relative"
                 activeClass="bg-white text-black rounded-t-lg"
                 key={i}
                 tab={tab.id}

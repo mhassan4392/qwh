@@ -46,9 +46,9 @@ const Banner = ({ messages }) => {
               ))}
             </div>
           </div>
-          <div className="flex justify-end">
+          {/* <div className="flex justify-end">
             <img src={banner_button} className="w-16 ml-1" alt="" />
-          </div>
+          </div> */}
         </div>
       </div>
 

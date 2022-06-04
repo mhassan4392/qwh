@@ -9,12 +9,13 @@ import account_join from "@/assets/images/account_join_.webp";
 import account_about from "@/assets/images/account_about.webp";
 
 import { BsChevronRight } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const features = [
-  { title: "我的钱包", image: account_wallet },
-  { title: "投注记录", image: account_transaction },
-  { title: "交易记录", image: account_betting },
-  { title: "账户管理", image: account_account },
+  { title: "我的钱包", image: account_wallet, to: "/wallet/mywallet" },
+  { title: "投注记录", image: account_transaction, to: "/mine" },
+  { title: "交易记录", image: account_betting, to: "/mine" },
+  { title: "账户管理", image: account_account, to: "/bankcard/list" },
 ];
 
 const features2 = [
@@ -39,10 +40,14 @@ const MineAccount = () => {
     >
       <div className="flex items-center justify-between px-4 py-4">
         {features.map((feature, i) => (
-          <div key={i} className="space-y-1 flex flex-col items-center">
+          <Link
+            to={feature.to}
+            key={i}
+            className="space-y-1 flex flex-col items-center"
+          >
             <img src={feature.image} className="w-10" alt="" />
             <div className="text-center text-xs">{feature.title}</div>
-          </div>
+          </Link>
         ))}
       </div>
       <div className="px-4 py-6">
