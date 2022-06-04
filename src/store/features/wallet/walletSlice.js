@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import getBalance from "./getBalance";
 import addTrans from "./addTrans";
+import addPay from "./addPay";
 
 const initialState = {
   wallet: null,
@@ -38,7 +39,7 @@ const walletSlice = createSlice({
         state.loading = "addTrans";
         state.error = null;
       })
-      .addCase(addTrans.fulfilled, (state, action) => {
+      .addCase(addTrans.fulfilled, (state) => {
         state.error = null;
         state.loading = false;
       })
@@ -46,6 +47,22 @@ const walletSlice = createSlice({
         state.loading = false;
         state.error = {
           type: "addTrans",
+          message: action.payload,
+        };
+      })
+      // add pay
+      .addCase(addPay.pending, (state) => {
+        state.loading = "addPay";
+        state.error = null;
+      })
+      .addCase(addPay.fulfilled, (state) => {
+        state.error = null;
+        state.loading = false;
+      })
+      .addCase(addPay.rejected, (state, action) => {
+        state.loading = false;
+        state.error = {
+          type: "addPay",
           message: action.payload,
         };
       });
