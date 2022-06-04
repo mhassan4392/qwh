@@ -3,26 +3,31 @@ import { useEffect, useState } from "react";
 import nodata from "@/assets/images/bankcard/nodata.webp";
 
 import PageLoader from "@/components/loading/PageLoader";
+import { useDispatch, useSelector } from "react-redux";
+import getCards from "../../../store/features/bankcard/getCards";
 
-import Axios from "@/utils/axios";
+// import Axios from "@/utils/axios";
 
 const TabOne = () => {
-  const [cards, setCards] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const { cards, loading } = useSelector((state) => state.bankcard);
+  const dispatch = useDispatch();
+  // const [cards, setCards] = useState([]);
+  // const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    setLoading(true);
-    Axios({ url: "/member/cards", method: "POST" })
-      .then((res) => {
-        setCards(res.data.data || []);
-        setLoading(false);
-      })
-      .catch((err) => setLoading(false));
+    // setLoading(true);
+    // Axios({ url: "/member/cards", method: "POST" })
+    //   .then((res) => {
+    //     setCards(res.data.data || []);
+    //     setLoading(false);
+    //   })
+    //   .catch((err) => setLoading(false));
+    dispatch(getCards());
   }, []);
 
   return (
     <div>
-      {loading && <PageLoader />}
+      {loading == "getCards" && <PageLoader />}
       {cards.length == 0 && (
         <div className="px-6 mt-20">
           <img src={nodata} className="w-full" alt="" />

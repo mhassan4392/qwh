@@ -8,9 +8,17 @@ import { IoReload } from "react-icons/io5";
 import icon_wallet_wallet from "@/assets/images/icon_wallet_wallet.webp";
 import { useDispatch, useSelector } from "react-redux";
 import getBalance from "@/store/features/wallet/getBalance";
+import getCards from "../../../../store/features/bankcard/getCards";
+import PageLoader from "../../../loading/PageLoader";
+
+import { Link } from "react-router-dom";
+import BanksModal from "../../backcard/BanksModal";
 
 const TabOne = () => {
   const { wallet, loading } = useSelector((state) => state.wallet);
+  const { cards, loading: cardsLoading } = useSelector(
+    (state) => state.bankcard
+  );
   const dispatch = useDispatch();
   const [more, setMore] = useState(false);
 
@@ -20,11 +28,15 @@ const TabOne = () => {
 
   const [select, setSelect] = useState("极速取款");
 
+  const [bankModal, setBankModal] = useState(false);
+
   useEffect(() => {
+    dispatch(getCards());
     dispatch(getBalance());
   }, []);
   return (
     <>
+      {cardsLoading == "getCards" && <PageLoader />}
       <div className="flex items-center justify-between py-3 px-4 bg-white border-b">
         <div className="flex items-center space-x-2">
           <div>钱包金额</div>
@@ -108,15 +120,34 @@ const TabOne = () => {
         </div>
       </div> */}
 
-      <div className="flex items-center justify-between text-xs px-4 bg-white py-4">
-        <div>{select == "极速取款" ? "到账银行卡" : "EBpay到账地址"}</div>
-        <div className="flex items-center space-x-2 text-secondary">
-          <AiOutlinePlus />
-          <span>
-            {select == "极速取款" ? "添加银行卡" : "添加EBpay收款地址"}
-          </span>
-        </div>
+      <div className="px-4">
+        {cards.map((card, i) => (
+          <div
+            onClick={() => setBankModal(true)}
+            key={i}
+            className="flex items-center my-3 bg-white rounded p-2 text-xs space-x-2 justify-between"
+          >
+            <div>{card.AccountName}</div>
+            <div>{card.AccountNo}</div>
+            <div>{card.BankName}</div>
+          </div>
+        ))}
       </div>
+
+      {cards.length == 0 && (
+        <div className="flex items-center justify-between text-xs px-4 bg-white py-4">
+          <div>{select == "极速取款" ? "到账银行卡" : "EBpay到账地址"}</div>
+          <Link
+            to="/bankcard/add"
+            className="flex items-center space-x-2 text-secondary"
+          >
+            <AiOutlinePlus />
+            <span>
+              {select == "极速取款" ? "添加银行卡" : "添加EBpay收款地址"}
+            </span>
+          </Link>
+        </div>
+      )}
 
       {/* <div className="px-4 py-3 text-xs">
         {select == "极速取款"
@@ -127,6 +158,8 @@ const TabOne = () => {
       <div className="text-center px-4 text-xs my-5">
         取款遇到问题？联系<span className="text-secondary">人工客服</span>解决
       </div>
+
+      <BanksModal open={bankModal} onClose={() => setBankModal(false)} />
     </>
   );
 };
