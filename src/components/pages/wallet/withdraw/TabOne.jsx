@@ -156,7 +156,7 @@ const TabOne = () => {
         ))}
       </div> */}
 
-      {cards.length > 0 && !card && (
+      {cards?.length > 0 && !card && (
         <div className="px-4 my-2" onClick={() => setCardsModal(true)}>
           <div className="bg-white text-center p-2 rounded">
             Please select a Card
@@ -212,7 +212,7 @@ const TabOne = () => {
         </form>
       )}
 
-      {cards.length == 0 && (
+      {cards?.length == 0 && (
         <div className="flex items-center justify-between text-xs px-4 bg-white py-4">
           <div>{select == "极速取款" ? "到账银行卡" : "EBpay到账地址"}</div>
           <Link

@@ -35,7 +35,7 @@ const bankcardSlice = createSlice({
         state.error = false;
       })
       .addCase(getCards.fulfilled, (state, action) => {
-        state.cards = action.payload;
+        state.cards = action.payload || [];
         state.error = null;
         state.loading = false;
       })

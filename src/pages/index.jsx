@@ -20,6 +20,10 @@ const Index = () => {
         setLoading(false);
       })
       .catch((err) => setLoading(false));
+
+    Axios({ url: "/Game/login/Finance_FNH/0", method: "POST" }).then((res) =>
+      console.log(res)
+    );
   }, []);
   return (
     <div style={{ paddingBottom: "60px" }}>

@@ -9,7 +9,6 @@ const addWithdrawal = createAsyncThunk(
     delete data.setValue;
     try {
       const res = await Axios({ url: "/withdrawals/do", method: "POST", data });
-      console.log(res);
       toast(res.data.msg);
       setValue("money", "");
       return res.data.info;

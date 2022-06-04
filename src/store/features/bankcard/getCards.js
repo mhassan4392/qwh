@@ -9,7 +9,6 @@ const getCards = createAsyncThunk(
         url: "/member/cards",
         method: "POST",
       });
-      console.log(res);
       return res.data.data;
     } catch (error) {
       return rejectWithValue(error);
