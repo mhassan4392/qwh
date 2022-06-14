@@ -12,34 +12,27 @@ import { IoLanguage } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import Axios from "@/utils/axios";
-
 import { useSelector, useDispatch } from "react-redux";
 
 import { useForm } from "react-hook-form";
-import Alert from "../../components/Alert/Alert";
+import Alert from "@/components/Alert/Alert";
 
-import userRegister from "../../store/features/auth/register";
+import userRegister from "@/store/features/auth/register";
+import getValidCode from "@/store/features/auth/getValidCode";
 
 const Register = () => {
   useEffect(() => {
-    Axios({
-      url: "/SignUp/validCode",
-      method: "POST",
-      responseType: "blob",
-    }).then((res) => {
-      const url = URL.createObjectURL(res.data);
-      setCodeImage(url);
-    });
+    // get valid code
+    dispatch(getValidCode());
   }, []);
-  const { loading, error } = useSelector((state) => state.auth);
+
+  const { loading, error, validCode } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
-  const [codeImage, setCodeImage] = useState(false);
 
   const {
     register,
@@ -53,13 +46,15 @@ const Register = () => {
   const { username, code } = watch();
 
   const submitForm = handleSubmit((data) => {
+    // first check if password is equal to confirm password
     if (data.password != data.confirmPassword) {
+      // passwords not matched then show error
       setError("confirmPassword", {
         type: "custom",
         message: "Passwords not matched",
       });
     } else {
-      console.log(data);
+      // if passwords match then run register function
       dispatch(
         userRegister({
           accountName: data.username,
@@ -190,9 +185,9 @@ const Register = () => {
                   {...register("code", { required: "Code is required" })}
                 />
                 <span className="right-element">
-                  {codeImage && (
+                  {validCode && (
                     <img
-                      src={codeImage}
+                      src={validCode}
                       className="w-20 h-[38px] mr-1"
                       alt=""
                     />
@@ -210,6 +205,7 @@ const Register = () => {
               )}
             </div>
 
+            {/* submit button */}
             <div className="my-5">
               <button
                 disabled={!isValid}

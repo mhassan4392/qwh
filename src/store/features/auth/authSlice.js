@@ -2,20 +2,28 @@ import { createSlice } from "@reduxjs/toolkit";
 import login from "./login";
 import authenticate from "./authenticate";
 import register from "./register";
+import getValidCode from "./getValidCode";
 
 const initialState = {
-  user: JSON.parse(localStorage.getItem("user")) || null,
-  loading: false,
+  user: null,
+  loading: true,
   error: null,
   code: null,
+  validCode: false,
 };
 
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
+    setUser: (state, action) => {
+      state.user = action.payload;
+    },
     setError: (state, action) => {
       state.error = action.payload;
+    },
+    setLoading: (state, action) => {
+      state.loading = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -62,9 +70,9 @@ const authSlice = createSlice({
         // state.user = null;
       })
       .addCase(authenticate.fulfilled, (state, action) => {
+        state.user = action.payload;
         state.loading = false;
         state.error = null;
-        state.user = action.payload;
       })
       .addCase(authenticate.rejected, (state, action) => {
         state.loading = false;
@@ -73,10 +81,26 @@ const authSlice = createSlice({
           message: action.payload,
         };
         state.user = null;
+      })
+      // get valid code
+      .addCase(getValidCode.pending, (state) => {
+        state.validCode = false;
+        state.loading = "getValidCode";
+      })
+      .addCase(getValidCode.fulfilled, (state, action) => {
+        state.validCode = action.payload;
+        state.loading = false;
+      })
+      .addCase(getValidCode.rejected, (state, action) => {
+        state.loading = false;
+        state.error = {
+          type: "getValidCode",
+          message: action.payload,
+        };
       });
   },
 });
 
-export const { setError } = authSlice.actions;
+export const { setError, setUser, setLoading } = authSlice.actions;
 
 export default authSlice.reducer;

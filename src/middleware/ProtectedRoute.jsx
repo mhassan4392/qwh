@@ -10,9 +10,9 @@ const ProtectedRoute = ({ children }) => {
     if (!user && !loading) {
       navigate("/entry/login");
     }
-  }, [user]);
+  }, [user, loading]);
 
-  return <>{children}</>;
+  return children;
 };
 
 export default ProtectedRoute;

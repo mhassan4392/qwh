@@ -11,19 +11,23 @@ import { ImSpinner3 } from "react-icons/im";
 import { IoLanguage } from "react-icons/io5";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import CodeModal from "../../components/pages/entry/codeModal";
+import CodeModal from "@/components/pages/entry/codeModal";
 
 import { useSelector, useDispatch } from "react-redux";
 import login from "@/store/features/auth/login";
 import { setError } from "@/store/features/auth/authSlice";
 
 import { useForm } from "react-hook-form";
-import Alert from "../../components/Alert/Alert";
+import Alert from "@/components/Alert/Alert";
 
-import Axios from "@/utils/axios";
+import { useCookies } from "react-cookie";
+import getValidCode from "@/store/features/auth/getValidCode";
 
 const Login = () => {
-  const { loading, error } = useSelector((state) => state.auth);
+  const [cookies, setCookie] = useCookies();
+
+  const { loading, error, validCode } = useSelector((state) => state.auth);
+
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -42,32 +46,30 @@ const Login = () => {
 
   let interval = useRef(null);
 
+  // timer function
   const setTimer = () => {
     clearInterval(interval.current);
     setTime(60);
   };
 
   useEffect(() => {
+    //  set timer if time is 60
     if (time == 60) {
       interval.current = setInterval(() => {
         setTime((time) => time - 1);
       }, 1000);
     } else if (time == 0) {
+      // clear timer if time is 0
       clearInterval(interval.current);
     }
   }, [time]);
 
   useEffect(() => {
-    Axios({
-      url: "/SignUp/validCode",
-      method: "POST",
-      responseType: "blob",
-    }).then((res) => {
-      const url = URL.createObjectURL(res.data);
-      setCodeImage(url);
-    });
-
+    // get valid code
+    dispatch(getValidCode());
+    // set error to null
     dispatch(setError(null));
+    // cleare the interval
     return () => clearInterval(interval.current);
   }, []);
 
@@ -79,33 +81,31 @@ const Login = () => {
     formState: { errors, isValid },
   } = useForm({ mode: "onChange" });
 
-  const { name, validCode } = watch();
+  const { name, code } = watch();
 
   const onSubmit = handleSubmit(async (data) => {
+    // go to code field
     if (!getCode) {
       dispatch(setError(null));
       setGetCode(true);
     } else {
-      console.log(data);
+      // if already set code then run the login function
       data.navigate = navigate;
+      data.setCookie = setCookie;
+      data.validCode = data.code;
       await dispatch(login(data));
     }
   });
 
   useEffect(() => {
+    // if login error then get valid code again
     if (!loading && error?.type == "login") {
-      Axios({
-        url: "/SignUp/validCode",
-        method: "POST",
-        responseType: "blob",
-      }).then((res) => {
-        const url = URL.createObjectURL(res.data);
-        setCodeImage(url);
-      });
+      dispatch(getValidCode());
     }
 
+    // on login error empty some fields and go back to username and password fields
     if (error && error.type == "login") {
-      setValue("validCode", "");
+      setValue("code", "");
       setValue("password", "");
       setGetCode(false);
     }
@@ -177,29 +177,29 @@ const Login = () => {
                           type="text"
                           placeholder="验证码"
                           className="!pr-[125px]"
-                          {...register("validCode", {
+                          {...register("code", {
                             required: "Code is required",
                           })}
                         />
                         <span className="right-element">
-                          {codeImage && (
+                          {validCode && (
                             <img
-                              src={codeImage}
+                              src={validCode}
                               className="w-20 h-[38px] mr-1"
                               alt=""
                             />
                           )}
                         </span>
-                        {validCode && (
+                        {code && (
                           <MdOutlineCancel
                             onClick={() => setValue("code", "")}
                             className="right-element !mr-[100px]"
                           />
                         )}
                       </div>
-                      {errors.validCode && (
+                      {errors.code && (
                         <div className="error-element">
-                          {errors.validCode.message}
+                          {errors.code.message}
                         </div>
                       )}
                     </div>
@@ -264,6 +264,7 @@ const Login = () => {
                       )}
                     </div>
 
+                    {/* remember field */}
                     <div className="my-5 text-xs flex items-center justify-between">
                       <div>
                         <input
@@ -280,6 +281,7 @@ const Login = () => {
                   </div>
                 )}
 
+                {/* submit button */}
                 <div className="my-5">
                   <button
                     disabled={!isValid}
@@ -315,6 +317,8 @@ const Login = () => {
           </Link>
         </div>
       </motion.div>
+
+      {/* code modal */}
       <CodeModal
         open={modal}
         onClose={() => setModal(false)}

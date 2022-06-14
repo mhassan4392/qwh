@@ -33,7 +33,7 @@ const AddModal = ({ ads, loading }) => {
         className="overflow-visible"
         onOutsideClick={() => setModal(false)}
       >
-        <Modal.Header className="bg-gradient-to-r from-red-300 to-primary text-white rounded-t-lg">
+        <Modal.Header className="bg-gradient-to-r from-primary-light to-primary text-white rounded-t-lg">
           <div className="flex items-center justify-between">
             <h2>{ads[activeSlide]?.Title}</h2>
             <BsX className="text-2xl" onClick={() => setModal(false)} />

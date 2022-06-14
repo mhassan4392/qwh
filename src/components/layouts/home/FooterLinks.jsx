@@ -8,11 +8,7 @@ import footer_links_2_transparent from "@/assets/images/footer_links_2_transpare
 import footer_links_3 from "@/assets/images/footer_links_3.webp";
 import footer_links_3_transparent from "@/assets/images/footer_links_3_transparent.webp";
 
-const FooterLinks = (
-  {
-    // setPaddingBottom
-  }
-) => {
+const FooterLinks = ({}) => {
   const links = [
     {
       title: "首页",
@@ -34,11 +30,6 @@ const FooterLinks = (
     },
   ];
   const LinksRef = useRef(null);
-  // useEffect(() => {
-  //   if (LinksRef.current) {
-  //     setPaddingBottom(LinksRef.current.clientHeight);
-  //   }
-  // }, [LinksRef.current]);
   return (
     <>
       <div ref={LinksRef} className="fixed bottom-0 left-0 right-0">
@@ -47,10 +38,11 @@ const FooterLinks = (
             <NavLink key={i} to={link.to}>
               {({ isActive }) => (
                 <>
-                  {isActive && <img src={link.image} className="w-6" alt="" />}
-                  {!isActive && (
-                    <img src={link.tr_image} className="w-6" alt="" />
-                  )}
+                  <img
+                    src={isActive ? link.image : link.tr_image}
+                    className="w-8"
+                    alt=""
+                  />
                   <div className="text-sm text-center">{link.title}</div>
                 </>
               )}

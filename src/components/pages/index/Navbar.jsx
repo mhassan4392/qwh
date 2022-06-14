@@ -36,7 +36,7 @@ const Navbar = () => {
             </div>
           </div>
           <div>
-            <button className="bg-gradient-to-r from-red-300 to-primary px-3 py-1.5 text-white text-xs rounded-full">
+            <button className="bg-gradient-to-r from-primary to-primary-light px-3 py-1.5 text-white text-xs rounded-full">
               立即下载
             </button>
           </div>
